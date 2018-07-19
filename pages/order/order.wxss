@@ -1,0 +1,71 @@
+.row {
+    background-color: #fff;
+    padding-left: 30rpx;
+    margin: 30rpx 0;
+}
+
+.row>view {
+    padding: 30rpx 0;
+}
+
+.row_t {
+    font-size: 28rpx;
+}
+
+.row_status {
+    float: right;
+    color: #ffda44;
+    margin-right: 30rpx;
+}
+
+.row_name {
+    font-size: 36rpx;
+    margin-bottom: 20rpx;
+}
+
+.row_content {
+    font-size: 28rpx;
+    color: #999;
+    margin-bottom: 6rpx;
+}
+
+.row_b {
+    position: relative;
+    height: 80rpx;
+}
+
+.row_b text {
+    font-size: 28rpx;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.row_b_btn {
+    position: absolute;
+    right: 30rpx;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10rpx 40rpx;
+    border-radius: 8rpx;
+    background: rgba(255,219,67,1);
+}
+
+.row_b_r {
+    position: absolute;
+    right: 30rpx;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.f-right {
+    right: 30rpx;
+}
+
+.marginR {
+    right: 210rpx;
+}
+
+.f-left {
+    left: 30rpx;
+}

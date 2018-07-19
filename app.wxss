@@ -1,0 +1,135 @@
+page {
+    color: #333;
+    background-color: #efeff4;
+}
+
+view,text,textarea {
+    box-sizing: border-box;
+}
+
+.clearfix::after {
+    clear: both;
+    content: "";
+    display: block;
+    height: 0px;
+    visibility: hidden;
+}
+
+.contact {
+    position: fixed;
+    right: 15rpx;
+    bottom: 10%;
+    width: 100rpx;
+    height: 100rpx;
+    font-size: 24rpx;
+    border-radius: 100%;
+    background-color: #ccc;
+    text-align: center;
+}
+
+.contact image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.contact contact-button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.box {
+    padding: 0 3%;
+}
+
+.bg-w {
+    background-color: white;
+}
+
+button {
+    background-color: #FAD502;
+}
+
+.button-hover {
+    color: #eee;
+}
+
+.my_bottom {
+    display: inline-block;
+    width: 100%;
+    line-height: 100rpx;
+    border: 1px solid #e4e4e4;
+    border-radius: 12rpx;
+    text-align: center;
+    font-size: 38rpx;
+    background-color: white;
+    color: #999;
+}
+
+.my_bottom.on {
+    border-color: #ffda44;
+    background-color: #ffda44;
+    color: #333;
+}
+
+.hover_bg {
+    background-color: #f5f5f5!important;
+}
+
+.hover_bg_on {
+    background-color: #ffca2b!important;
+}
+
+.color_gray {
+    color: #808080!important;
+}
+
+.color_yellow {
+    color: #ffda44!important;
+}
+
+.border_t,.border_b,.border_r,.border_l {
+    position: relative;
+}
+
+.border_t::before,.border_b::before {
+    position: absolute;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 1rpx;
+    background-color: #ccc;
+    transform: scaleY(0.5);
+}
+
+.border_t::before {
+    top: 0;
+}
+
+.border_b::before {
+    bottom: 0;
+}
+
+.border_r:after,.border_l:after {
+    position: absolute;
+    top: 0;
+    content: "";
+    width: 1rpx;
+    height: 100%;
+    background-color: #ccc;
+    transform: scaleX(0.5);
+}
+
+.border_r:after {
+    right: 0;
+}
+
+.border_l:after {
+    left: 0;
+}

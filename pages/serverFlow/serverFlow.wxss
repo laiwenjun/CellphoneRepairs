@@ -1,0 +1,35 @@
+page {
+    background-color: #fff;
+}
+
+.flowCon {
+    padding: 30rpx;
+}
+
+.flow_title_l {
+    display: inline-block;
+    vertical-align: middle;
+    width: 30rpx;
+    height: 30rpx;
+    border: 4rpx solid #ffda44;
+    border-radius: 100%;
+    margin-right: 20rpx;
+}
+
+.flow_title_text {
+    font-size: 32rpx;
+    font-weight: 700;
+}
+
+.flow_content {
+    line-height: 40rpx;
+    font-size: 28rpx;
+    color: #666;
+    margin-left: 15rpx;
+    margin-top: 10rpx;
+    padding: 10rpx 0 40rpx 35rpx;
+}
+
+.border_l {
+    border-left: 1rpx solid #e4e4e4;
+}

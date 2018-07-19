@@ -1,0 +1,55 @@
+page {
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 3%;
+}
+
+.imgBox {
+    background-color: white;
+    margin: 10% 0 5%;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+}
+
+.text01 {
+    text-align: center;
+    font-size: 44rpx;
+    margin-bottom: 5%;
+}
+
+.text02 {
+    text-align: center;
+    font-size: 36rpx;
+    color: #999;
+}
+
+.buttonBox {
+    width: 100%;
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttonBox>view {
+    width: 45%;
+}
+
+button {
+    background-color: #FAD502;
+}
+
+.content {
+    margin-bottom: 8%;
+    color: #999;
+    font-size: 32rpx;
+    line-height: 60rpx;
+}
+
+.profile {
+    padding-left: 2%;
+    line-height: 70rpx;
+    font-size: 32rpx;
+    color: #999;
+}

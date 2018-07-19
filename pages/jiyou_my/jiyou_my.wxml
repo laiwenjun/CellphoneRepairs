@@ -1,0 +1,9 @@
+<view class="con_box clearfix" wx:for="{{list}}" wx:key="index">
+    <view class="left_box">
+        <image src="{{item[0].headImg}}"></image>
+    </view>
+    <view class="rigth_box">
+        <view class="rigth_box_name">{{item[0].nickName}}</view>
+        <view class="rigth_box_text">累计贡献收益：￥{{item[0].money}}</view>
+    </view>
+</view>

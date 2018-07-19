@@ -1,0 +1,59 @@
+<view class="bg-w">
+    <view class="Box ">
+        <view class="left">发票状态：</view>
+        <view class="right ">
+            <view wx:if="{{invoice.status==0}}">未发放</view>
+            <view wx:if="{{invoice.status==1}}">已开票</view>
+            <view wx:if="{{invoice.status==2}}">开票失败，请重新申请或联系客服</view>
+            <view wx:if="{{invoice.status==3}}">寄送失败</view>
+            <view wx:if="{{invoice.status==4}}">二次寄送</view>
+        </view>
+    </view>
+    <view class="Box ">
+        <view class="left">订单编号：</view>
+        <view class="right ">
+            <view>{{invoice.orderSn}}</view>
+        </view>
+        <view class="left">下单时间：</view>
+        <view class="right ">
+            <view>{{invoice.add_time}}</view>
+        </view>
+    </view>
+    <view class="Box ">
+        <view class="left">发票类型：</view>
+        <view class="right ">
+            <view wx:if="{{invoice.type==1}}">电子普通发票</view>
+            <view wx:if="{{invoice.type==2}}">纸质普通发票</view>
+        </view>
+        <view class="left">发票抬头：</view>
+        <view class="right ">
+            <view>{{invoice.head}}</view>
+        </view>
+        <view class="left" wx:if="{{invoice.invoiceHao}}">税　　号：</view>
+        <view class="right" wx:if="{{invoice.invoiceHao}}">
+            <view>{{invoice.invoiceHao}}</view>
+        </view>
+        <view class="left">发票内容：</view>
+        <view class="right ">
+            <view>技术服务费</view>
+        </view>
+        <view class="left">实付金额：</view>
+        <view class="right ">
+            <view>{{invoice.price}}元</view>
+        </view>
+    </view>
+    <view class="Box ">
+        <view class="left" wx:if="{{invoice.type==2}}">收件地址：</view>
+        <view class="right " wx:if="{{invoice.type==2}}">
+            <view>
+                <text>{{invoice.name}}</text>
+                <text style="margin-left: 20rpx;">{{invoice.phone}}</text>
+            </view>
+            <view>{{invoice.address}}</view>
+        </view>
+        <view class="left" wx:if="{{!invoice.name}}">接收邮箱：</view>
+        <view class="right " wx:if="{{!invoice.name}}">
+            <view>{{invoice.address}}</view>
+        </view>
+    </view>
+</view>

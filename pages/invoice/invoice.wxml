@@ -1,0 +1,73 @@
+<view class="bg-w top_box">
+    <view class="top_box_title">发票类型</view>
+    <view>
+        <text catchtap="click_type" class="top_box_sel {{invoice.type==1?'on':'null'}}" data-val="1">电子普通发票</text>
+        <text catchtap="click_type" class="top_box_sel {{invoice.type==2?'on':'null'}}" data-val="2">纸质普通发票</text>
+    </view>
+    <view class="color_gray" style="margin-top:20rpx;">电子普通发票与纸质普通发票具有同等法律效力，可支持报销入账。</view>
+</view>
+<view class="bg-w top_box" style="margin-top:20rpx;">
+    <view class="top_box_title">抬头类型</view>
+    <view>
+        <text catchtap="click_head_type" class="top_box_sel {{invoice.head_type==1?'on':'null'}}" data-val="1">个人/非企业单位</text>
+        <text catchtap="click_head_type" class="top_box_sel  {{invoice.head_type==2?'on':'null'}}" data-val="2">企业单位</text>
+    </view>
+</view>
+<view class="bg-w">
+    <view class="formBox" style="border-top:1px solid #f4f4f4;">
+        <view class="title">发票抬头</view>
+        <view class="text">
+            <view>
+                <input bindinput="input_head" placeholder="请填写发票抬头" type="text" value=""></input>
+            </view>
+        </view>
+    </view>
+    <view class="formBox" wx:if="{{invoice.head_type==2}}">
+        <view class="title">税号</view>
+        <view class="text">
+            <view>
+                <input bindinput="input_invoiceHao" placeholder="请填写纳税人识别号" type="text" value=""></input>
+            </view>
+        </view>
+    </view>
+    <view class="formBox">
+        <view class="title">发票内容</view>
+        <view class="text">
+            <view>*技术服务费</view>
+        </view>
+    </view>
+    <view class="formBox">
+        <view class="title">发票金额</view>
+        <view class="text">
+            <view>{{invoice.price}}元</view>
+        </view>
+    </view>
+</view>
+<view class="bg-w" style="margin-top:20rpx;">
+    <view class="formBox" wx:if="{{invoice.type==1}}">
+        <view class="remark">电子邮箱</view>
+        <view class="text">
+            <input bindinput="input_email" placeholder="用于向您发送电子发票" value=""></input>
+        </view>
+    </view>
+</view>
+<view class="bg-w" style="margin-top:20rpx;">
+    <view class="formBox" wx:if="{{invoice.type==2}}">
+        <view class="remark">收件地址</view>
+        <view catchtap="selectAddress" class="text">
+            <view catchtap="selectAddress" hoverClass="hover_bg">
+                <view class="color_gray" wx:if="{{selectAddress_status}}">请填写收件地址</view>
+                <view hoverClass="hover_bg" wx:if="{{!selectAddress_status}}">
+                    <view style="display:inline-block;width:25%;vertical-align: top;">{{data.name}}</view>
+                    <view style="display:inline-block;width:75%;">{{data.phone}}</view>
+                    <view>{{data.serverAddress}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="box" style="margin-top:3%;margin-bottom:6%;">
+    <form bindsubmit="formSubmit" reportSubmit="true">
+        <button formType="submit" hoverClass="hover_bg_on">提交申请</button>
+    </form>
+</view>

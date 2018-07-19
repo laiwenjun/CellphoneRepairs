@@ -1,0 +1,158 @@
+.selModel_box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 4;
+}
+
+.selModel_top {
+    width: 100%;
+    padding: 24rpx 4% 18rpx;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.selModel_top .input_box {
+    background-color: white;
+    position: relative;
+    height: 68rpx;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.selModel_top .input_box image {
+    width: 32rpx;
+    height: 32rpx;
+    position: absolute;
+    left: 30rpx;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.selModel_top .input_box input {
+    padding-left: 70rpx;
+    font-size: 28rpx;
+    height: 68rpx;
+}
+
+.selModel_con {
+    position: relative;
+}
+
+.selModel_con .con_left {
+    width: 22%;
+    background-color: #f0f0f0;
+    float: left;
+}
+
+.selModel_con .con_right {
+    width: 78%;
+    float: left;
+}
+
+.con_left view {
+    line-height: 90rpx;
+    font-size: 28rpx;
+    color: #999;
+    text-align: center;
+    box-sizing: border-box;
+    border-left: 4px solid #f0f0f0;
+    border-right: 4px solid #f0f0f0;
+}
+
+.con_left view.on {
+    color: #333;
+    background-color: white;
+    border-left: 4px solid #ffda44;
+    border-right: 4px solid white;
+}
+
+.con_right_title {
+    height: 90rpx;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.con_right_title text {
+    color: #333;
+    padding: 0 30rpx;
+    background-color: #fff;
+    display: inline-block;
+    line-height: 90rpx;
+    font-size: 28rpx;
+}
+
+.con_right_title :after {
+    position: absolute;
+    content: '';
+    left: 50%;
+    top: 50%;
+    width: 70%;
+    height: 1px;
+    background-color: #e4e4e4;
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.selModel_main {
+    width: 100%;
+}
+
+.selModel_main_div {
+    float: left;
+    width: 33.33333%;
+    text-align: center;
+    margin-top: 20rpx;
+    margin-bottom: 30rpx;
+}
+
+.selModel_main_div image {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.selModel_main_div .div_text {
+    font-size: 24rpx;
+    color: #666;
+    text-align: center;
+    margin-top: 18rpx;
+    height: 48rpx;
+}
+
+.selModel_top .return_ico {
+    width: 8%;
+    position: relative;
+    height: 68rpx;
+}
+
+.selModel_top .return_ico:after {
+    position: absolute;
+    content: "";
+    left: 10rpx;
+    top: 50%;
+    width: 26rpx;
+    height: 26rpx;
+    border: 1px solid #999;
+    border-color: transparent transparent #999 #999;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.sel_result {
+    background-color: white;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow-y: scroll;
+}
+
+.sel_result_con {
+    padding: 30rpx;
+    border-bottom: 1px solid #e4e4e4;
+    color: #666;
+    font-size: 32rpx;
+}

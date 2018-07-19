@@ -1,0 +1,16 @@
+.main {
+    padding: 0 30rpx;
+}
+
+.title {
+    font-size: 28rpx;
+    font-weight: 700;
+    padding: 30rpx 0;
+}
+
+.p {
+    font-size: 24rpx;
+    padding: 5rpx 0;
+    line-height: 40rpx;
+    word-break: break-all;
+}

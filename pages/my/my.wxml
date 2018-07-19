@@ -1,0 +1,55 @@
+<view class="top">
+    <view class="imgCon">
+        <open-data catchtap="openwin" class="" data-url="my" type="userAvatarUrl"></open-data>
+    </view>
+    <view class="name">
+        <open-data type="userNickName"></open-data>
+    </view>
+</view>
+<view class="rowCon">
+    <view catchtap="openwin" class="row border_b" data-url="order">
+        <view catchtap="openwin" class="row_l yhq" data-url="order">
+            <image src="../../images/my_order.png"></image>
+        </view>
+        <view catchtap="openwin" class="row_text" data-url="order">我的订单</view>
+        <view catchtap="openwin" class="arrows" data-url="order"></view>
+    </view>
+    <view catchtap="openwin" class="row border_b" data-url="coupon">
+        <view catchtap="openwin" class="row_l yhq" data-url="coupon">
+            <image src="../../images/yhq.png"></image>
+        </view>
+        <view catchtap="openwin" class="row_text" data-url="coupon">优惠券</view>
+        <view catchtap="openwin" class="arrows" data-url="coupon"></view>
+    </view>
+    <view bindtap="tel" class="row border_b">
+        <view class="row_l lxkf">
+            <image src="../../images/lxkf.png"></image>
+        </view>
+        <view class="row_text">
+      热线电话
+      <text>4006-233-866</text>
+        </view>
+        <view class="arrows"></view>
+    </view>
+    <view bindtap="telJoin" class="row">
+        <view class="row_l lxkf">
+            <image src="../../images/join.png"></image>
+        </view>
+        <view class="row_text">
+      加盟专线
+      <text>16620137673</text>
+        </view>
+        <view class="arrows"></view>
+    </view>
+</view>
+<view bindtap="openwin" class="activity" data-url="jiyou_center_new">
+    <view class="activity_text01" data-url="jiyou_center_new">将加速度推荐给好友</view>
+    <view class="activity_text02" data-url="jiyou_center_new">赢取
+    <text data-url="jiyou_center_new" style="color:red;">现金奖励</text>
+    </view>
+    <image data-url="jiyou_center_new" src="../../images/jiyou_006.png "></image>
+</view>
+<view class="contact">
+    <contact-button sessionFrom="小程序加速度手机维修" size="125" type="default-light"></contact-button>
+    <image src="../../images/contact.png"></image>
+</view>

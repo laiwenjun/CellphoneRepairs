@@ -1,0 +1,89 @@
+.title_box {
+    width: 100%;
+    height: 80rpx;
+    background-color: white;
+    border-bottom: 1px solid rgba(228,228,228,1);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.title_box view {
+    float: left;
+    width: 25%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 28rpx;
+}
+
+.title_box text {
+    height: 80rpx;
+    line-height: 80rpx;
+    padding-bottom: 20rpx;
+    color: #999;
+}
+
+.title_box text.on {
+    border-bottom: 2px solid rgba(255,218,68,1);
+    color: #333;
+}
+
+.box {
+    padding: 5% 0 0 3%;
+    background-color: white;
+}
+
+.con_box {
+    width: 100%;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 0 3% 3% 0;
+    font-size: 28rpx;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.con_box view {
+    float: left;
+}
+
+.con_box_div01 {
+    width: 80%;
+    color: rgba(51,51,51,1);
+    line-height: 40rpx;
+}
+
+.con_box_div02 {
+    color: #333;
+    width: 20%;
+    font-weight: 600;
+    text-align: right;
+    line-height: 40rpx;
+}
+
+.con_box_div03 {
+    width: 100%;
+    color: rgba(102,102,102,1);
+    margin: 10rpx 0 30rpx;
+}
+
+.con_box_div04 {
+    width: 80%;
+    color: rgba(153,153,153,1);
+    line-height: 50rpx;
+}
+
+.con_box_div05 {
+    text-align: right;
+    width: 20%;
+    line-height: 50rpx;
+    color: rgba(153,153,153,1);
+}
+
+.con_box_div05.yellow {
+    color: rgba(255,218,68,1);
+}
+
+.con_box_div05.green {
+    color: #89CA12;
+}

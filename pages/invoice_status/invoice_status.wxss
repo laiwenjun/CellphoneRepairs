@@ -1,0 +1,17 @@
+.Box {
+    font-size: 28rpx;
+    line-height: 60rpx;
+    padding: 2% 3%;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.Box .left {
+    display: inline-block;
+    width: 20%;
+    vertical-align: top;
+}
+
+.Box .right {
+    display: inline-block;
+    width: 78%;
+}

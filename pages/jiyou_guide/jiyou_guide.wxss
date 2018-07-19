@@ -1,0 +1,33 @@
+.formBox {
+    font-size: 28rpx;
+    position: relative;
+    color: rgba(102,102,102,1);
+}
+
+.formBox .img {
+    width: 40rpx;
+    height: 40rpx;
+    position: absolute;
+    top: 34rpx;
+    left: 3%;
+    z-index: 2;
+}
+
+.formBox i {
+    width: 16rpx;
+    height: 16rpx;
+    border: 1px solid #808080;
+    border-top: transparent;
+    border-left: transparent;
+    position: absolute;
+    right: 3%;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.formBox .text {
+    position: relative;
+    border-bottom: 1px solid #f4f4f4;
+    padding: 4% 0 4% 11%;
+    line-height: 50rpx;
+}

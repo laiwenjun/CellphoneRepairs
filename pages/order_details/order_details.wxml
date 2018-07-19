@@ -1,0 +1,158 @@
+<view class="block top">
+    <text>订单状态（{{info.repairWay==72?'上门维修':info.repairWay==73?'到店维修':info.repairWay==74?'邮寄维修':info.repairWay==75?'现场维修':info.repairWay==77?'在店下单':''}}）</text>
+    <text class="top_r">{{info.tips}}</text>
+</view>
+<view class="block leaveWord clearfix" hidden="{{info.cancelReason?false:true}}">
+    <text class="row_l">取消原因</text>
+    <text class="row_r">{{info.cancelReason}}</text>
+</view>
+<view class="block masterInfoCon display-box-h box-align-center" wx:if="{{info.status==2}}">
+    <view class="headerImgCon">
+        <image src="{{info.headImg}}"></image>
+    </view>
+    <view class="flex-one masterInfo">
+        <view class="masterInfo_top">维修工程师：{{info.name}}</view>
+        <view class="masterInfo_tip">已维修{{info.orderNum}}单</view>
+    </view>
+    <view catchtap="tel" class="masterPhone" data-phone="{{info.phone}}">
+        <image src="../../images/phone_icon.png"></image>
+    </view>
+</view>
+<view class="block serverInfoCon">
+    <block wx:if="{{info.repairWay==72}}">
+        <view class="serverInfo_contact border_b clearfix">
+            <view class="row_l">联系人</view>
+            <view class="row_r">{{info.nickName}} {{info.orderPhone}}</view>
+        </view>
+        <view class="serverInfo_address border_b clearfix">
+            <view class="row_l">服务地址</view>
+            <view class="row_r">{{info.province}}{{info.city}}{{info.district}}{{info.orderAddr}}</view>
+        </view>
+        <view class="server_time clearfix">
+            <view class="row_l">服务时间</view>
+            <view class="row_r">{{info.orderTime}}</view>
+        </view>
+    </block>
+    <block wx:if="{{info.repairWay==73}}">
+        <view class="serverInfo_contact border_b clearfix">
+            <view class="row_l">门店地址</view>
+            <view class="row_r">{{info.store.address}}</view>
+        </view>
+        <view class="serverInfo_address border_b clearfix">
+            <view class="row_l">服务时间</view>
+            <view class="row_r">{{info.store.serviceTime}}</view>
+        </view>
+        <view class="server_time clearfix">
+            <view class="row_l">联系电话</view>
+            <view class="row_r">{{info.store.phone}}</view>
+        </view>
+    </block>
+    <block wx:if="{{info.repairWay==74}}">
+        <view class="serverInfo_contact border_b clearfix">
+            <view class="row_l">联系人</view>
+            <view class="row_r">{{info.nickName}} {{info.orderPhone}}</view>
+        </view>
+        <view class="serverInfo_address  clearfix">
+            <view class="row_l">服务地址</view>
+            <view class="row_r">{{info.province}}{{info.city}}{{info.district}}{{info.orderAddr}}</view>
+        </view>
+    </block>
+    <block wx:if="{{info.repairWay==75}}">
+        <view class="serverInfo_contact border_b clearfix">
+            <view class="row_l">联系人</view>
+            <view class="row_r">{{info.nickName}} {{info.orderPhone}}</view>
+        </view>
+        <view class="serverInfo_address  clearfix">
+            <view class="row_l">师傅编号</view>
+            <view class="row_r">{{info.masterID}}</view>
+        </view>
+    </block>
+</view>
+<view class="block">
+    <view class="title">
+        <text>{{info.phoneBrand}}</text>
+        <text>{{info.phoneModel}}</text>
+        <text>{{info.colorName}}</text>
+    </view>
+    <view class="defalutCon">
+        <view class="defalutCon_row clearfix" wx:for="{{info.Failurelist}}" wx:for-item="jtem" wx:key="{{index}}">
+            <text>{{jtem.desc}}</text>
+            <text class="defalutCon_row_r">￥{{jtem.grade}}</text>
+        </view>
+    </view>
+    <view class="defalutImgCon">
+        <image bindtap="previewImage" data-url="{{ktem}}" src="{{ktem}}" wx:for="{{info.userUploadImgs}}" wx:for-item="ktem" wx:key="{{index}}"></image>
+    </view>
+</view>
+<view class="block youCon">
+    <text>优惠</text>
+    <text class="youCon_text">{{info.couponName}}</text>
+</view>
+<view class="block priceCon">
+    <view>
+        <text>维修价格</text>
+        <text class="priceCon_r">￥{{info.totalPrice}}</text>
+    </view>
+    <view>
+        <text>优惠价格</text>
+        <text class="priceCon_r">-￥{{info.couponPrice}}</text>
+    </view>
+    <view>
+        <text>订单改价</text>
+        <text class="priceCon_r">{{info.spreads}}</text>
+    </view>
+    <view>
+        <text>预计需支付</text>
+        <text class="priceCon_r">￥{{info.payPrice}}</text>
+    </view>
+    <view class="priceCon_tip">
+    维修总价为预计费用，价格以最终维修方案为准
+  </view>
+</view>
+<view class="block leaveWord clearfix">
+    <text class="row_l">留言</text>
+    <text class="row_r">{{info.desc}}</text>
+</view>
+<view class="block orderInfo">
+    <view class="clearfix">
+        <text class="row_l">订单编号</text>
+        <text class="row_r">{{info.orderSn}}</text>
+    </view>
+    <view class="clearfix">
+        <text class="row_l">下单时间</text>
+        <text class="row_r">{{info.addTime}}</text>
+    </view>
+</view>
+<view class="payCon clearfix">
+    <text catchtap="backRepair" data-orderid="{{info.orderID}}" hidden="{{info.status==2?false:true}}">返修</text>
+    <text catchtap="snFun" data-ordersn="{{info.orderSn}}" hidden="{{info.status==2?false:true}}">维修凭证</text>
+    <text catchtap="appraise" data-masterid="{{info.masterID}}" data-orderid="{{info.orderID}}" hidden="{{info.status==2&&info.isComment==0?false:true}}">评价</text>
+    <text catchtap="applyInvoice" class="pay" data-name="{{info.nickName}}" data-orderid="{{info.orderID}}" data-phone="{{info.orderPhone}}" data-price="{{info.payPrice}}" data-url="invoice" wx:if="{{info.status==2&&info.isInvoice==0}}">申请发票</text>
+    <text catchtap="applyInvoice" class="pay" data-name="{{info.nickName}}" data-orderid="{{info.orderID}}" data-phone="{{info.orderPhone}}" data-price="{{info.payPrice}}" data-url="invoice_status" wx:if="{{info.status==2&&info.isInvoice==1}}">查看发票</text>
+    <text catchtap="cancelOrder" hidden="{{info.status==0?false:true}}">取消订单</text>
+    <text catchtap="pay" class="pay" data-orderid="{{info.orderID}}" hidden="{{info.status==0?false:true}}">付款</text>
+</view>
+<view style="width:100%;height:110rpx;"></view>
+<view class="cancleOrderBg" wx:if="{{!cancle_flag?true:false}}">
+    <view class="cancleOrderCon">
+        <view class="cancleOrder_t">订单取消原因</view>
+        <view class="cancleOrder_t1">请反馈原因，我们会努力改进</view>
+        <view catchtap="cancelSelect" class="cancleOrder_row" data-index="{{index}}" wx:for="{{cancleData}}" wx:key="{{index}}">
+            <text catchtap="cancelSelect" class="cancleOrder_row_l {{item.flag?'cancleOrder_row_l_active':''}}" data-index="{{index}}"></text>
+            <text catchtap="cancelSelect" class="cancleOrder_row_r" data-index="{{index}}">{{item.text}}</text>
+        </view>
+        <view class="cancleTextarea">
+            <textarea bindinput="textareaVal" placeholder="手动输入原因,您可以输入100个字"></textarea>
+        </view>
+        <view class="cancleBtn">
+            <text catchtap="cancelNo">取消</text>
+            <text catchtap="cancelYes" data-orderid="{{info.orderID}}">提交</text>
+        </view>
+    </view>
+</view>
+<view class="voucher" hidden="{{voucherFlag}}">
+    <view class="voucher_img">
+        <image catchtap="voucherClose" class="voucher_close" src="../../images/close.png"></image>
+        <image class="voucherImg" mode="widthFix" src="{{voucherImg}}"></image>
+    </view>
+</view>

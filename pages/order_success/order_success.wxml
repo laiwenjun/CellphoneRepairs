@@ -1,0 +1,7 @@
+<view>
+    <image class="img" src="../../images/order_success.png"></image>
+    <view class="title">预约提交成功</view>
+    <view class="tip">稍后将有电话客服与你电话联系，</view>
+    <view class="tip">请保持手机畅通</view>
+    <view catchtap="look" class="btn">查看订单详情</view>
+</view>

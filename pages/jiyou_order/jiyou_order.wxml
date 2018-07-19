@@ -1,0 +1,26 @@
+<view bindtap="click_sel" class="title_box clearfix">
+    <view data-status="0">
+        <text class="{{only_status==0?'on':''}}" data-status="0">全部</text>
+    </view>
+    <view data-status="1">
+        <text class="{{only_status==1?'on':''}}" data-status="1">已结算</text>
+    </view>
+    <view data-status="2">
+        <text class="{{only_status==2?'on':''}}" data-status="2">待结算</text>
+    </view>
+    <view data-status="3">
+        <text class="{{only_status==3?'on':''}}" data-status="3">已关闭</text>
+    </view>
+</view>
+<view style="width:100%;height:80rpx;"></view>
+<view class="box" wx:if="{{item.status==only_status||all_status}}" wx:for="{{list}}" wx:key="index">
+    <view class="con_box clearfix ">
+        <view class="con_box_div01">{{item.phoneBrand}} {{item.phoneModel}}
+        <text style="margin-left:30rpx;">{{item.ChooseName}}</text>
+        </view>
+        <view class="con_box_div02">￥{{item.totalPrice}}</view>
+        <view class="con_box_div03">{{item.nickName}}</view>
+        <view class="con_box_div04">{{item.add_time}}</view>
+        <view class="con_box_div05  {{item.status==1?'green':''}}  {{item.status==2?'yellow':''}}">{{item.status==1?'已结算':''}}{{item.status==2?'未结算':''}}{{item.status==3?'关闭':''}}</view>
+    </view>
+</view>

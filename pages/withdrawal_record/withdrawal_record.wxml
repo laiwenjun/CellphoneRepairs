@@ -1,0 +1,7 @@
+<view class="con_box" wx:for="{{info}}" wx:key="index">
+    <view class="con_box_text01  {{item.status==1?'green':''}} {{item.status==0?'yellow':''}}">{{item.status==-1?'已取消':''}}{{item.status==1?'提现成功':''}}{{item.status==0?'待审核':''}}</view>
+    <view class="con_box_text02">{{item.update_time}}</view>
+    <view class="con_box_text03">
+        <text style="font-size:28rpx;">￥</text>{{item.amounts}}
+        </view>
+</view>
