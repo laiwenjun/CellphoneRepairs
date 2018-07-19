@@ -1,0 +1,17 @@
+<view class="addressSelectCon">
+    <view catchtap="select" class="addressSelectCon_row" data-address="{{item.address}}" data-city="{{item.city}}" data-district="{{item.district}}" data-id="{{item.addressID}}" data-province="{{item.province}}" wx:for="{{listArr}}" wx:key="{{index}}">
+        <view catchtap="select" class="{{item.class?'addressSelectCon_row_l_active':'addressSelectCon_row_l'}}" data-address="{{item.address}}" data-city="{{item.city}}" data-district="{{item.district}}" data-id="{{item.addressID}}" data-province="{{item.province}}"></view>
+        <view catchtap="select" class="addressSelectCon_content" data-address="{{item.address}}" data-city="{{item.city}}" data-district="{{item.district}}" data-id="{{item.addressID}}" data-province="{{item.province}}">
+            <view catchtap="select" data-address="{{item.address}}" data-city="{{item.city}}" data-district="{{item.district}}" data-id="{{item.addressID}}" data-province="{{item.province}}">{{item.consignee}}</view>
+            <view catchtap="select" data-address="{{item.address}}" data-city="{{item.city}}" data-district="{{item.district}}" data-id="{{item.addressID}}" data-province="{{item.province}}">{{item.province}}{{item.city}}{{item.district}}{{item.address}}</view>
+        </view>
+        <image catchtap="openwin" class="edit" data-address="{{item.address}}" data-city="{{item.city}}" data-district="{{item.district}}" data-id="{{item.addressID}}" data-name="{{item.consignee}}" data-phone="{{item.phone}}" data-province="{{item.province}}" data-url="addressEdit" src="../../images/edit.png"></image>
+        <image catchtap="del" class="del" data-id="{{item.addressID}}" src="../../images/del.png"></image>
+    </view>
+    <view catchtap="openwin" class="addressSelectCon_row" data-url="addressEdit">
+        <view catchtap="openwin" class="jiahao" data-url="addressEdit">＋</view>
+        <view catchtap="openwin" class="addressSelectCon_content" data-url="addressEdit">
+            <view catchtap="openwin" data-url="addressEdit">新增服务地址</view>
+        </view>
+    </view>
+</view>

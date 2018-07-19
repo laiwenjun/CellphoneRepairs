@@ -1,0 +1,19 @@
+<block wx:for="{{question_info}}" wx:key="index">
+    <view bindtap="click_show" class="bg-w" data-status="{{index}}">
+        <view class="formBox" data-status="{{index}}">
+            <image class="img" data-status="{{index}}" mode="scaleToFill" src="../../images/jiyou_009.png"></image>
+            <view class="text" data-status="{{index}}" hoverClass="hover_bg">
+                <view data-status="{{index}}">{{item.question}}</view>
+                <i></i>
+            </view>
+        </view>
+    </view>
+    <view class="bg-w" data-status="{{index}}" hidden="{{status_num!=index}}">
+        <view class="formBox" data-status="{{index}}">
+            <image class="img" data-status="{{index}}" mode="scaleToFill" src="../../images/jiyou_010.png"></image>
+            <view class="text" data-status="{{index}}" hoverClass="hover_bg">
+                <view style="margin-bottom:16rpx;font-size:28rpx;" wx:for="{{item.answer}}" wx:for-item="i" wx:key="index">{{i}}</view>
+            </view>
+        </view>
+    </view>
+</block>

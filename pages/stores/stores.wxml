@@ -1,0 +1,30 @@
+<view class="row" wx:if="{{data.length}}" wx:for="{{data}}" wx:key="index">
+    <view bindtap="clickAddress" class="row_t">
+        <view class="row_l"></view>
+        <view class="row_r" data-id="{{item.id}}">
+            <view class="row_r_title" data-id="{{item.id}}">{{item.name}}
+          <text hidden="{{index!=0||lat_all==0}}">离我最近</text>
+                <text class="green" hidden="{{!item.status_way}}">支持上门</text>
+            </view>
+            <view class="row_r_addr" data-id="{{item.id}}">{{item.address}}</view>
+            <view class="row_r_time" data-id="{{item.id}}">
+                <text data-id="{{item.id}}">营业时间：</text>
+                <text data-id="{{item.id}}">{{item.serviceTime}}</text>
+            </view>
+            <view class="row_r_traffic" data-id="{{item.id}}" wx:if="{{item.guide}}">
+                <text data-id="{{item.id}}">交通指引：</text>
+                <text data-id="{{item.id}}">{{item.guide}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="rowBtn clearfix">
+        <view bindtap="clickPhone" data-phone="{{item.phone}}">
+            <image class="phone" data-phone="{{item.phone}}" src="../../images/phone2.png"></image>
+            <text data-phone="{{item.phone}}">电话联系</text>
+        </view>
+        <view bindtap="clickMap" data-address="{{item.address}}" data-lat="{{item.lat}}" data-lng="{{item.lng}}" data-name="{{item.name}}">
+            <image bindtap="clickMap" class="addr" data-address="{{item.address}}" data-lat="{{item.lat}}" data-lng="{{item.lng}}" data-name="{{item.name}}" src="../../images/addr2.png"></image>
+            <text bindtap="clickMap" data-address="{{item.address}}" data-lat="{{item.lat}}" data-lng="{{item.lng}}" data-name="{{item.name}}">查看地图</text>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,183 @@
+page {
+    background-color: #fff;
+}
+
+.box-align-center {
+    -webkit-box-align: center;
+    -moz-box-align: center;
+}
+
+.display-box-h {
+    width: 100%;
+    display: box;
+    box-orient: horizontal;
+}
+
+.flex-one {
+    box-flex: 1;
+}
+
+.masterInfoCon {
+    position: relative;
+    padding: 30rpx;
+}
+
+.headerImgCon {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100%;
+    overflow: hidden;
+    background-color: #999;
+}
+
+.headerImgCon image {
+    width: 100%;
+    height: 100%;
+}
+
+.masterInfo {
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
+
+.masterPhone {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 100%;
+    background-color: #89ca12;
+    background-image: url(../../images/phone_icon.png-do-not-use-local-path-./pages/appraise/appraise.wxss&54&20);
+    background-size: 30rpx 30rpx;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.masterInfo_top {
+    font-size: 32rpx;
+    margin-bottom: 10rpx;
+}
+
+.masterInfo_tip {
+    color: #999;
+    font-size: 28rpx;
+}
+
+.starCon {
+    margin: 100rpx 0 40rpx;
+    text-align: center;
+}
+
+.star_five {
+    margin: 0 10rpx;
+    position: relative;
+    display: inline-block;
+    color: red;
+    width: 0px;
+    height: 0px;
+    border-right: 36rpx solid transparent;
+    border-bottom: 24rpx solid #c7c7c7;
+    border-left: 36rpx solid transparent;
+    transform: rotate(35deg);
+}
+
+.star_five:before {
+    border-right: 36rpx solid transparent;
+    border-bottom: 24rpx solid #c7c7c7;
+    border-left: 36rpx solid transparent;
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -0px;
+    left: -36rpx;
+    display: inline-block;
+    content: '';
+    transform: rotate(-70deg);
+}
+
+.star_five:after {
+    position: absolute;
+    display: inline-block;
+    top: 0px;
+    left: -36rpx;
+    width: 0px;
+    height: 0px;
+    border-right: 36rpx solid transparent;
+    border-bottom: 24rpx solid #c7c7c7;
+    border-left: 36rpx solid transparent;
+    transform: rotate(74deg);
+    content: '';
+}
+
+.star_active {
+    border-bottom: 24rpx solid #ffda44;
+}
+
+.star_active:before {
+    border-bottom: 24rpx solid #ffda44;
+}
+
+.star_active:after {
+    border-bottom: 24rpx solid #ffda44;
+}
+
+.starTip {
+    text-align: center;
+    font-size: 28rpx;
+    color: #666;
+}
+
+.starBtn {
+    width: 80%;
+    margin: 60rpx auto 30rpx;
+}
+
+.starBtn text {
+    float: left;
+    font-size: 28rpx;
+    border: 1rpx solid #e4e4e4;
+    color: #666;
+    padding: 14rpx 30rpx;
+    border-radius: 8rpx;
+    margin-right: 20rpx;
+    margin-bottom: 20rpx;
+}
+
+.starBtn_active {
+    border: 1rpx solid #ffda44!important;
+    color: #ffda44!important;
+}
+
+.textarea {
+    width: 80%;
+    height: 300rpx;
+    border: 1rpx solid #e4e4e4;
+    border-radius: 8rpx;
+    padding: 30rpx;
+    font-size: 28rpx;
+    margin: 0 auto 20rpx;
+}
+
+.placeholder {
+    color: #999;
+}
+
+.tip {
+    text-align: center;
+    color: #666;
+    font-size: 28rpx;
+}
+
+.confirm {
+    width: 80%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 36rpx;
+    border-radius: 8rpx;
+    color: #333;
+    background-color: #ffda44;
+    margin: 60rpx auto 0;
+}
+
+.confirm:active {
+    background-color: #f0da44;
+}

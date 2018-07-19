@@ -1,0 +1,38 @@
+page {
+    background-color: #fff;
+}
+
+.img {
+    display: block;
+    width: 291rpx;
+    height: 181rpx;
+    margin: 100rpx auto;
+}
+
+.title {
+    text-align: center;
+    font-size: 36rpx;
+    font-weight: 700;
+}
+
+.tip {
+    font-size: 28rpx;
+    color: #999;
+    text-align: center;
+    margin: 8rpx 0;
+}
+
+.btn {
+    width: 380rpx;
+    font-size: 36rpx;
+    font-weight: 700;
+    text-align: center;
+    padding: 30rpx 0;
+    border: 1rpx solid #e4e4e4;
+    border-radius: 8rpx;
+    margin: 100rpx auto;
+}
+
+.btn:active {
+    background-color: #f2f2f2;
+}

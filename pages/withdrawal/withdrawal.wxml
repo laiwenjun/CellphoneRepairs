@@ -1,0 +1,17 @@
+<view class="top_title">
+    <text>提现至微信零钱账户：</text>
+    <open-data type="userNickName"></open-data>
+</view>
+<view class="top_title">
+    <view class="top_title_text">提现金额</view>
+    <view class="top_title_num">
+        <text>￥</text>
+        <input bindinput="input_money" placeholder="" type="number" value="{{money}}"></input>
+    </view>
+    <view class="top_title_bottom">可提现余额：￥{{user_info.integral}}</view>
+</view>
+<view class="bottom_text">每次提现金额不得少于 5 元。</view>
+<view bindtap="withdrawal" style="padding:10% 3%;">
+    <button hoverClass="hover_bg_on">确认提现</button>
+</view>
+<view bindtap="openwin" class="botton_div" data-url="withdrawal_record">提现记录</view>

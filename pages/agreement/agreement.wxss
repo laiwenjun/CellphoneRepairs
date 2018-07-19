@@ -1,0 +1,30 @@
+view {
+    text-indent: 2em;
+}
+
+.bg-w {
+    background-color: white;
+    line-height: 40rpx;
+    padding: 0 3%;
+    width: 100%;
+    font-size: 28rpx;
+}
+
+.h {
+    text-align: center;
+    font-size: 40rpx;
+    color: #333;
+    font-weight: 600;
+    line-height: 120rpx;
+}
+
+.title {
+    font-size: 28rpx;
+    color: #333;
+    line-height: 80rpx;
+}
+
+.font-b {
+    font-weight: 600;
+    text-decoration: underline;
+}

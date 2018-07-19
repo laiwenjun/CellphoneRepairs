@@ -1,0 +1,98 @@
+.row {
+    margin-bottom: 20rpx;
+    background-color: #fff;
+}
+
+.row_t {
+    padding: 30rpx;
+}
+
+.row_r {
+    margin-left: 0;
+}
+
+.row_r_title {
+    font-size: 32rpx;
+}
+
+.row_r_title>text {
+    font-size: 24rpx;
+    color: #ff8400;
+    border: 2rpx solid #ff8400;
+    border-radius: 8rpx;
+    padding: 2rpx 8rpx;
+    margin-left: 12rpx;
+}
+
+.row_r_title>text {
+    color: #0099ff;
+    border: 2rpx solid #0099ff;
+}
+
+.row_r_addr,.row_r_time>text,.row_r_traffic>text {
+    font-size: 24rpx;
+    color: #999;
+    margin-top: 16rpx;
+}
+
+.row_r_time,.row_r_traffic {
+    line-height: 32rpx;
+}
+
+.rowBtn {
+    border-top: 2rpx solid #e4e4e4;
+}
+
+.rowBtn>view {
+    float: left;
+    display: block;
+    width: 50%;
+    height: 88rpx;
+    line-height: 88rpx;
+    font-size: 32rpx;
+    text-align: center;
+}
+
+.rowBtn>view:active {
+    background-color: #f5f5f5;
+}
+
+.rowBtn>view:first-child {
+    border-right: 2rpx solid #e4e4e4;
+}
+
+.rowBtn>view:first-child>text {
+    color: #89ca12;
+}
+
+.rowBtn>view:last-child>text {
+    color: #0099ff;
+}
+
+.rowBtn>view>text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.phone {
+    display: inline-block;
+    vertical-align: middle;
+    width: 36rpx;
+    height: 36rpx;
+    background-size: 100%;
+    margin-right: 8rpx;
+}
+
+.addr {
+    display: inline-block;
+    vertical-align: middle;
+    width: 36rpx;
+    height: 36rpx;
+    background-size: 100%;
+    margin-right: 8rpx;
+}
+
+.green {
+    color: #89ca12!important;
+    border-color: #89ca12!important;
+}

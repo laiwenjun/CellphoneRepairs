@@ -1,0 +1,50 @@
+<view class="jiyou_top">
+    <view class="jiyou_top_text01">可提现余额</view>
+    <view class="jiyou_top_text02">{{jiyou_info.integral}}</view>
+    <view class="jiyou_top_text03">
+        <image src="../../images/jiyou_001.png"></image>
+        <text>累计收益{{jiyou_info.totalIntegral}}</text>
+    </view>
+</view>
+<view class="conBox">
+    <view class="conBox_title clearfix">
+        <view class="left">
+            <view class="conBox_title_num">{{jiyou_info.monthIntegral}}</view>
+            <view class="conBox_title_text">本月收益</view>
+        </view>
+        <view class="right">
+            <view class="conBox_title_num">{{jiyou_info.monthFriend}}</view>
+            <view class="conBox_title_text">本月新增机友</view>
+        </view>
+    </view>
+    <view class="conBox_title02">
+        <view class="rowCon" wx:for="{{page_info}}" wx:key="index">
+            <view catchtap="openwin" class="row {{item.num==page_info.length?'':'border_b'}}" data-url="{{item.url}}">
+                <view catchtap="openwin" class="row_l yhq" data-url="{{item.url}}">
+                    <image src="{{item.img}}"></image>
+                </view>
+                <view catchtap="openwin" class="row_text" data-url="{{item.url}}">{{item.text}}</view>
+                <view catchtap="openwin" class="arrows" data-url="{{item.url}}"></view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="show_share" class="bottom_text">
+        <text>关注加速度公众号</text>
+        <text class="color_blue">获取收益通知</text>
+    </view>
+    <view bindtap="show_haibao" class="botton_div">
+        <button hoverClass="hover_bg_on">开始推广</button>
+    </view>
+</view>
+<view catchtap="hide_haibao" class="alert_bg" hidden="{{haibao_info.hide}}">
+    <view catchtap="null_f" class="alert_img02">
+        <image mode="widthFix" src="{{haibao_info.posters}}"></image>
+        <button catchtap="save" class="alert_img02_btn">保存海报到相册</button>
+    </view>
+</view>
+<view catchtap="hide_share" class="alert_bg" hidden="{{share_hide}}">
+    <view class="alert_box">
+        <image class="img" mode="widthFix" src="../../images/jiyou_012.png"></image>
+        <view catchtap="hide_share" class="bottom_but" hoverClass="hover_bg">知道了</view>
+    </view>
+</view>

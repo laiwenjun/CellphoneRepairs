@@ -1,0 +1,51 @@
+<view class="flowCon">
+    <view class="flow_title">
+        <text class="flow_title_l"></text>
+        <text class="flow_title_text">选择故障</text>
+    </view>
+    <view class="flow_content border_l">
+    选择需要维修的机型，以及故障类型，获得一个初步的估价。
+  </view>
+    <view class="flow_title">
+        <text class="flow_title_l"></text>
+        <text class="flow_title_text">提交预约</text>
+    </view>
+    <view class="flow_content border_l">
+    填写完整的上门维修信息，包括地址时间等。以便客服和维修工程师为你提供更好的服务。
+  </view>
+    <view class="flow_title">
+        <text class="flow_title_l"></text>
+        <text class="flow_title_text">客服受理</text>
+    </view>
+    <view class="flow_content border_l">
+    客服会根据订单信息与你取得初步沟通，以便为你安排最合适的维修工程师
+  </view>
+    <view class="flow_title">
+        <text class="flow_title_l"></text>
+        <text class="flow_title_text">工程师接单</text>
+    </view>
+    <view class="flow_content border_l">
+    工程师接到订单后，将会与你电话确认上门服务时间。
+  </view>
+    <view class="flow_title">
+        <text class="flow_title_l"></text>
+        <text class="flow_title_text">工程师上门</text>
+    </view>
+    <view class="flow_content border_l">
+    维修工程师将会在约定的时间上门。工程师上门会穿着统一的制服、维修工具箱。
+  </view>
+    <view class="flow_title">
+        <text class="flow_title_l"></text>
+        <text class="flow_title_text">确认效果</text>
+    </view>
+    <view class="flow_content border_l">
+    维修结束后，工程师将会和你确认维修效果，设备各项功能是否完好。
+  </view>
+    <view class="flow_title">
+        <text class="flow_title_l"></text>
+        <text class="flow_title_text">支付费用</text>
+    </view>
+    <view class="flow_content">
+    确认维修效果后，现场支付维修费用。加速度提供的支付方式有微信支付、支付宝、现金。
+  </view>
+</view>

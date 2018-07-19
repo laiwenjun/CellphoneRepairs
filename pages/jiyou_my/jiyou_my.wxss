@@ -1,0 +1,35 @@
+.con_box {
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 3%;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.left_box {
+    float: left;
+    width: 18%;
+}
+
+.left_box image {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100%;
+}
+
+.rigth_box {
+    float: left;
+    width: 80%;
+    height: 100rpx;
+    line-height: 50rpx;
+}
+
+.rigth_box_name {
+    font-size: 34rpx;
+    color: rgba(51,51,51,1);
+}
+
+.rigth_box_text {
+    font-size: 28rpx;
+    color: rgba(153,153,153,1);
+}

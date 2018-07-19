@@ -1,0 +1,92 @@
+<view>
+    <view class="rowCon">
+        <view class="row">
+            <view class="row_l">维修信息</view>
+            <view class="row_r">
+                <view>{{info.phoneBrand}}{{info.phoneModel}}{{info.colorName}}</view>
+                <view wx:for="{{info.Failurelist}}" wx:for-item="jtem" wx:key="{{index}}">
+                    <text>{{jtem.desc}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="row">
+            <view class="row_l">维修价格</view>
+            <view class="row_r">￥{{info.totalPrice}}</view>
+        </view>
+        <view class="row">
+            <view class="row_l">订单编号</view>
+            <view class="row_r">{{info.orderSn}}</view>
+        </view>
+        <view class="row">
+            <view class="row_l">完成时间</view>
+            <view class="row_r">{{info.dealTime}}</view>
+        </view>
+    </view>
+    <view class="rowCon" style="padding-bottom:0;">
+        <view class="row row1 border_b">
+            <view class="row_l">维修方式</view>
+            <view class="row_r algin_r">上门返修</view>
+        </view>
+        <view class="block">
+            <view class="formBox">
+                <button class="openSettingBtn" hidden="{{openSettingBtn}}" openType="openSetting">打开授权设置页</button>
+                <image catchtap="selectAddress" class="img" mode="scaleToFill" src="../../images/icon_dizhi.png"></image>
+                <view catchtap="selectAddress" class="text" hoverClass="hover_bg">
+                    <view catchtap="selectAddress">
+                        <view class="color_gray" wx:if="{{selectAddress_status}}">{{info.serverAddress}}</view>
+                        <view wx:if="{{!selectAddress_status}}">
+              {{info.name}}
+              <view style="display:inline-block;margin-left:40rpx;">{{info.phone}}</view>
+                        </view>
+                        <view wx:if="{{!selectAddress_status}}">
+              {{info.city}}{{info.district}}{{info.address}}
+            </view>
+                    </view>
+                    <i catchtap="selectAddress"></i>
+                </view>
+            </view>
+            <view catchtap="selectConTime" class="formBox">
+                <image catchtap="selectConTime" class="img" mode="scaleToFill" src="../../images/icon_shijian.png"></image>
+                <view class="text" hoverClass="hover_bg">
+                    <view catchtap="selectConTime" class="{{info.timeStr=='请选择上门时间'?'color_gray':''}}" style="position: relative;">
+            {{info.timeStr}}
+          </view>
+                    <i catchtap="selectConTime"></i>
+                </view>
+            </view>
+        </view>
+    </view>
+    <textarea bindinput="inputMark" class="textarea" hidden="{{textArea}}" placeholder="点击填写返修原因（请填写尽可能详细的返修原因，便于客服安排工程师返修）" placeholderStyle="placeholder"></textarea>
+    <view class="imgCon">
+        <view wx:for="{{imgArr}}" wx:key="{{index}}">
+            <image bindtap="previewImage" data-url="{{item}}" src="{{item}}"></image>
+            <text bindtap="imgDel" data-index="{{index}}">X</text>
+        </view>
+        <view bindtap="addImg" class="addImg">+</view>
+    </view>
+    <view catchtap="confirm" class="confirm" hoverClass="hover_bg_on">提交返修申请</view>
+</view>
+<view catchtap="time_cancle" class="guzhang_alertBox" wx:if="{{timeShadeFlag}}">
+    <view catchtap="null_fun" class="alert_conBox">
+        <view class="clearfix">
+            <picker-view bindchange="ChangeDate" data-type="date" indicatorStyle="height: 50px;" style="width: 50%; height: 250px;float:left;" value="{{dateValue}}">
+                <picker-view-column catchtap="null_fun">
+                    <view style="line-height: 50px;text-align: center;" wx:for="{{dateArr}}" wx:key="index">{{item.text}}</view>
+                </picker-view-column>
+            </picker-view>
+            <picker-view bindchange="ChangeTime" data-type="time" indicatorStyle="height: 50px;" style="width: 50%; height: 250px;float:left;" value="{{timeValue}}">
+                <picker-view-column catchtap="confirm_model">
+                    <view style="line-height: 50px;text-align: center;" wx:for="{{timeArr}}" wx:key="index">{{item.text}}</view>
+                </picker-view-column>
+            </picker-view>
+        </view>
+        <view class="alert_bottonBox">
+            <view class="right">
+                <view catchtap="time_cancle" class="my_bottom" hoverClass="hover_bg">取消</view>
+            </view>
+            <view class="right">
+                <view catchtap="time_confirm" class="my_bottom on" hoverClass="hover_bg_on">确定</view>
+            </view>
+        </view>
+    </view>
+</view>

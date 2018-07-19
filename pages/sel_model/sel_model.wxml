@@ -1,0 +1,34 @@
+<view class="selModel_box">
+    <view class="selModel_top">
+        <i bindtap="input_blur" class="return_ico" style="display:{{sel_result?'inline-block':'none'}}"></i>
+        <view class="input_box" style="width:{{sel_result?'91':'100'}}%;">
+            <image src="../../images/search.png"></image>
+            <input bindfocus="input_focus" bindinput="input_for" placeholder="搜索设备型号"></input>
+        </view>
+    </view>
+    <view class="selModel_con clearfix" style="height:{{windowHeight-46}}px">
+        <scroll-view scrollY class="con_left" style="height:{{windowHeight-46}}px">
+            <view bindtap="selModel_brandid" class="{{selModel_brandID==item.brandID?'on':''}}" data-brandid="{{item.brandID}}" wx:for="{{brandArr}}" wx:key="index">{{item.brandName}}</view>
+        </scroll-view>
+        <scroll-view scrollY class="con_right" style="height:{{windowHeight-46}}px">
+            <view class="con_right_title">
+                <text>手机</text>
+            </view>
+            <view bindtap="selModel_modelid" class="  selModel_main" data-model="{{item}}" hidden="{{selModel_brandID==item.brandID?false:true}}" wx:for="{{sel_modelList}}">
+                <view class="selModel_main_div " data-model="{{item}}">
+                    <image data-model="{{item}}" src="{{item.thumbImg||'../../images/null.png'}}"></image>
+                    <view class="div_text" data-model="{{item}}">{{item.modelName}}</view>
+                </view>
+            </view>
+            <view bindtap="selModel_modelid" class="  selModel_main" data-model="{{item}}" hidden="{{selModel_brandID==item.brandID?false:true}}" wx:for="{{sel_modelList02}}">
+                <view class="selModel_main_div " data-model="{{item}}">
+                    <image data-model="{{item}}" src="{{item.thumbImg||'../../images/null.png'}}"></image>
+                    <view class="div_text" data-model="{{item}}">{{item.modelName}}</view>
+                </view>
+            </view>
+        </scroll-view>
+        <view class="sel_result" hidden="{{!sel_result}}" style="height:{{windowHeight-46}}px">
+            <view bindtap="selModel_modelid" class="sel_result_con" data-model="{{item}}" hoverClass="hover_bg" wx:for="{{sel_resultArr}}" wx:key="index">{{item.modelName}}</view>
+        </view>
+    </view>
+</view>
