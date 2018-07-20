@@ -39,7 +39,7 @@ Page({
             url: a.globalData.serverUrl + "viewRecord",
             data: {
                 from_appid: a.globalData.appId,
-                url: "pages/index/index10086",
+                url: "pages/index/index",
                 userID: wx.getStorageSync("azooo_userID")
             },
             method: "POST",
