@@ -1,7 +1,7 @@
 getApp();
 
 var e = null;
-
+//选择自己当前的机型
 Page({
     data: {
         brandArr: null,

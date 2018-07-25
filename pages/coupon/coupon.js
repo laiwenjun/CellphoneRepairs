@@ -1,5 +1,5 @@
+//优惠券
 var t = getApp();
-
 Page({
     data: {
         listArr: [],

@@ -1,5 +1,5 @@
+//手机机型检测页
 var a = getApp(), t = null, e = null, o = null, l = null, r = null, n = !0;
-
 Page({
     data: {
         imgUrls: [],
@@ -604,6 +604,7 @@ Page({
     null_fun: function() {},
     onShow: function() {
         n = !0, this.show_selModel();
+        console.log("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
     },
     onShareAppMessage: function() {
         return {

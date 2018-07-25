@@ -1,5 +1,5 @@
+//提现记录处理
 var o = getApp(), t = [], a = 1, n = 1;
-
 Page(function(o, t, a) {
     return t in o ? Object.defineProperty(o, t, {
         value: a,

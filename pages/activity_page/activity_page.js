@@ -1,3 +1,4 @@
+//活动脚本
 Page({
     data: {
         page: "https://api.azooo.com/WechatWeb/Activity/huandianchi99.html"

@@ -1,3 +1,4 @@
+//优惠卡激活处理
 Page({
     data: {},
     onLoad: function(a) {

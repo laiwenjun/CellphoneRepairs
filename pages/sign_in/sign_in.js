@@ -1,5 +1,5 @@
+//扩张加盟店计划介绍
 var t = getApp(), o = null;
-
 Page({
     data: {
         number: "",

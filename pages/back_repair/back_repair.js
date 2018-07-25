@@ -1,5 +1,5 @@
+//用户选择服务地址和维修时间
 var t = getApp(), e = "";
-
 Page({
     data: {
         info: {

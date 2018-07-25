@@ -1,5 +1,5 @@
+//订单详细情况脚本
 var e = getApp(), t = "";
-
 Page({
     data: {
         info: "",

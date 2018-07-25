@@ -1,5 +1,5 @@
+//获取用户当前最近的门店定位
 var t, e = getApp(), o = 0, a = 0;
-
 Page({
     data: {
         lat_all: o,

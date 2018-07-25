@@ -1,5 +1,5 @@
+//机友中心
 var o = getApp();
-
 Page({
     data: {
         page_info: [ {

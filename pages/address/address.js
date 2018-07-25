@@ -1,5 +1,5 @@
+//地址填写脚本
 var t = getApp();
-
 Page({
     data: {
         listArr: [],

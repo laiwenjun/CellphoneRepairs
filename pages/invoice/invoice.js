@@ -1,3 +1,4 @@
+//申请发票填写资料页
 var e, t = getApp(), o = null, n = null, a = "";
 
 Page({

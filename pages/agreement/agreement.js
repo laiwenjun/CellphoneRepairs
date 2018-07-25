@@ -1,3 +1,4 @@
+//用户协议的签订
 Page({
     data: {},
     onLoad: function(n) {},

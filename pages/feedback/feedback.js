@@ -1,5 +1,5 @@
+//问题反馈脚本
 var t = getApp();
-
 Page({
     data: {
         imgArr: [],

@@ -1,5 +1,5 @@
+//提现处理
 var o, n, t = getApp(), e = "";
-
 Page({
     data: {
         user_info: {

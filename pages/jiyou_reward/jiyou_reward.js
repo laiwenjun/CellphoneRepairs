@@ -1,5 +1,6 @@
-var t = 1, e = getApp(), a = [], o = "";
+//奖励脚本
 
+var t = 1, e = getApp(), a = [], o = "";
 Page({
     data: {
         top_status: 0,

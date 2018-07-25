@@ -1,3 +1,4 @@
+//申请发票后状态
 function n(n, o, e) {
     return o in n ? Object.defineProperty(n, o, {
         value: e,

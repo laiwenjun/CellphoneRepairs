@@ -1,5 +1,5 @@
+//联系电话和加盟电话设置
 var n = getApp();
-
 Page({
     data: {
         userInfo: ""

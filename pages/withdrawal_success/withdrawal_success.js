@@ -1,3 +1,4 @@
+//提现成功页面提示处理
 Page({
     data: {},
     onLoad: function(n) {},

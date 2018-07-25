@@ -1,5 +1,7 @@
-var a, e, t = getApp(), o = !0, r = !1, s = !0, i = [ 1 ], n = 0, c = 0;
+//选择维修方案目录1
 
+
+var a, e, t = getApp(), o = !0, r = !1, s = !0, i = [ 1 ], n = 0, c = 0;
 Page({
     data: {
         faultListFlag: !1,

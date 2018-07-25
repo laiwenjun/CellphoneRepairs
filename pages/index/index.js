@@ -63,6 +63,7 @@ Page({
             success: function(a) {
                 console.log("获取轮播图片", a), 0 == a.data.error_code ? n.setData({
                     imgUrls: a.data.data.carousel
+                  
                 }) : wx.showModal({
                     title: "提示",
                     content: a.data.error_msg,
@@ -645,7 +646,7 @@ Page({
     changeModelClick02: function() {
         try {
             wx.getStorageSync("Allbrandmodel") ? wx.navigateTo({
-                url: "../sel_model/sel_model"
+               url: "../sel_model/sel_model"
             }) : wx.showToast({
                 title: "加载数据中，请稍等再点击更换机型",
                 icon: "success",

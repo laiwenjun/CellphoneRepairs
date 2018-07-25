@@ -1,5 +1,5 @@
+//下单成功处理
 var t, e, s = getApp();
-
 Page({
     data: {
         status: 72,
