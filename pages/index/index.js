@@ -74,7 +74,7 @@ Page({
             }
         });
         try {
-            var s = wx.getStorageSync("Allbrandmodel"), i = wx.getStorageSync("AllFault");
+            var s = wx.getStorageSync("Allbrandmodel"), i = wx.getStorageSync("AllFault");//所有故障
             if (console.log("本地缓存：", s), s && i) {
                 t = s.brandList, e = s.modelList, o = i.lagerRepairList, l = i.repairDetailList;
                 var d = n.selectBrand(t[0].brandID);
