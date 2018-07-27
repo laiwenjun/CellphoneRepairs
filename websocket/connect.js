@@ -1,5 +1,5 @@
 module.exports = (function() {
-    var webSocketUrl = 'ws://123.56.85.164:18080/websocket',
+  var webSocketUrl = 'ws://119.23.65.177:8201/websocket',
         socketOpened = false, // 标记websocket是否已经打开
         socketMsgQueue = [],
         connCallback = null,
@@ -21,7 +21,12 @@ module.exports = (function() {
                 var msg = socketMsgQueue.pop();
                 sendSocketMessage(msg);
             }
-            // sendSocketMessage('after');
+          sendSocketMessage({
+            // "cmd": 1, "optId": 1, "param": "sss",
+            cmd:10001,
+            optId:1,
+            param:"test10001"
+          });
             
             // connection callback
             connCallback && connCallback.call(null);
@@ -31,7 +36,7 @@ module.exports = (function() {
             msgReceived.callback && msgReceived.callback.call(null, res.data, ...msgReceived.params);
         });
         wx.onSocketError(function(res){ // 链接出错时的处理
-            console.log('webSocket fail');
+            console.log('webSocket fail',res);
         });
     }
 

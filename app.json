@@ -40,5 +40,11 @@
         "navigationBarBackgroundColor": "#FFDB43",
         "navigationBarTitleText": "",
         "navigationBarTextStyle": "black"
-    }
+    },
+      "networkTimeout": {
+        "request": 10000,
+        "connectSocket": 5000,
+        "uploadFile": 10000,
+        "downloadFile": 10000
+      }
 }

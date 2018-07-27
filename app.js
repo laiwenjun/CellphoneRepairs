@@ -4,6 +4,7 @@ App({
   onLaunch: function(o) {
     //连接websocket
     if (!websocket.socketOpened) {
+      console.log("准备连接websocket服务器")
       websocket.setReceiveCallback(msgReceived, this);
       websocket.connect();
     }
