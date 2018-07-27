@@ -21,12 +21,11 @@ module.exports = (function() {
                 var msg = socketMsgQueue.pop();
                 sendSocketMessage(msg);
             }
-          sendSocketMessage({
-            // "cmd": 1, "optId": 1, "param": "sss",
-            cmd:10001,
-            optId:1,
-            param:"test10001"
-          });
+          // sendSocketMessage({
+          //   cmd:10001,
+          //   optId:1,
+          //   param:"test10001"
+          // });
             
             // connection callback
             connCallback && connCallback.call(null);

@@ -48,6 +48,26 @@ App({
     });
   },
   login: function(o) {
+    //测试请求
+    if (!websocket.socketOpened) {
+      // setMsgReceiveCallback 
+      websocket.setReceiveCallback(msgReceived, this);
+      // connect to the websocket 
+      websocket.connect();
+      websocket.send({
+        cmd: 10001,
+        optId: 1,
+        param: "test10001"
+      });
+    }
+    else {
+      websocket.send({
+        cmd: 10001,
+        optId: 1,
+        param: "test10001"
+      });
+    }
+    //测试请求
     var e = this;
     console.log("login= " + JSON.stringify(o));
     var n = require("/utils/account_id.js").account_id;
