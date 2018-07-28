@@ -1,11 +1,18 @@
 var websocket = require('websocket/connect.js');
 var msgReceived = require('websocket/msgHandler.js');
+var onfire = require("utils/onfire.js");
+//声明事件eventObj，用于在脚本unLoad的时候卸载监听
+var eventObj = onfire.on('testKey', function (msg) {
+  // 当消息被传递时，做具体的事
+  console.log("接到testKey事件----------------！！~~", msg)
+})
 App({
+
   onLaunch: function(o) {
     //连接websocket
     if (!websocket.socketOpened) {
       console.log("准备连接websocket服务器")
-      websocket.setReceiveCallback(msgReceived, this);
+      //websocket.setReceiveCallback(msgReceived, this);
       websocket.connect();
     }
 
@@ -48,16 +55,13 @@ App({
     });
   },
   login: function(o) {
-    //测试请求
+    //测试请求-----↓↓↓
     if (!websocket.socketOpened) {
-      // setMsgReceiveCallback 
-      websocket.setReceiveCallback(msgReceived, this);
-      // connect to the websocket 
       websocket.connect();
       websocket.send({
-        cmd: 10001,
-        optId: 1,
-        param: "test10001"
+        cmd: 10001,   //消息号
+        optId: 1,     //用户标识，唯一ID
+        param: "test10001" //参数
       });
     }
     else {
@@ -67,7 +71,7 @@ App({
         param: "test10001"
       });
     }
-    //测试请求
+    //测试请求-----↑↑↑
     var e = this;
     console.log("login= " + JSON.stringify(o));
     var n = require("/utils/account_id.js").account_id;

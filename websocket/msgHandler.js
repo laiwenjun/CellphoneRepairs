@@ -1,3 +1,4 @@
+var onfire = require("../utils/onfire.js");
 module.exports = function(msg, page) { // page -> index page
   var app = getApp();
   console.log("接到服务器返回消息")
@@ -7,6 +8,8 @@ module.exports = function(msg, page) { // page -> index page
   console.log("msg = ", msg)
   if (cmd === 103) { // 登录
     console.log("接到服务器返回10001消息")
+    //发送事件出去
+    onfire.fire('testKey',msg)
   } else if (cmd === 'XXXXX') { //
 
   } else if (cmd === 'XXXXX') { // 
