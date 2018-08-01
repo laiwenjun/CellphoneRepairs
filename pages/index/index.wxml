@@ -137,7 +137,8 @@
         </view>
     </view>
 </view>
-<view class="fixed_img">
+<!-- 注销免费电池领取 -->
+<!-- <view class="fixed_img">
     <navigator appId="wxf52190102ef5ee33" class="navigator" extraData="{foo: 'bar'}" openType="navigate" path="pages/raise/raise" target="miniProgram" version="release">打开绑定的小程序</navigator>
     <image bindtap="openwin_small" hidden="{{!is_ico_start}}" src="../../images/iphone_ico.png"></image>
-</view>
+</view> -->

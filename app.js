@@ -5,7 +5,12 @@ var onfire = require("utils/onfire.js");
 var eventObj = onfire.on('testKey', function (msg) {
   // 当消息被传递时，做具体的事
   console.log("接到testKey事件----------------！！~~", msg)
+
+
 })
+
+
+
 App({
 
   onLaunch: function(o) {
@@ -53,6 +58,7 @@ App({
       fail: function(o) {},
       complete: function(o) {}
     });
+   
   },
   login: function(o) {
     //测试请求-----↓↓↓
@@ -61,16 +67,19 @@ App({
       websocket.send({
         cmd: 10001,   //消息号
         optId: 1,     //用户标识，唯一ID
-        param: "test10001" //参数
-      });
+        tokencode: o.code,  //微信code
+        param: { "tokencode": o.code}},//参数
+      );
     }
     else {
       websocket.send({
         cmd: 10001,
         optId: 1,
+        tokencode: o.code,  //微信code
         param: "test10001"
       });
     }
+
     //测试请求-----↑↑↑
     var e = this;
     console.log("login= " + JSON.stringify(o));
@@ -78,7 +87,10 @@ App({
     wx.setStorage({
       key: "account_id",
       data: n
-    }), wx.request({
+    }),
+      console.log("-----------用户o.code--------------------" + o.code);
+     //登录数据请求
+     wx.request({
       url: this.globalData.serverUrl + "login3",
       data: {
         code: o.code,
@@ -93,35 +105,42 @@ App({
       header: {
         "content-type": "application/json"
       },
+      //登录成功返回数据
       success: function(n) {
         console.log("login3", n);
+      
         var a = n.data;
-        if (0 == a.error_code) {
+        // if (0 == a.error_code) {   //注销跳过微信注册
           var l = a.data.azooo_userID;
           e.globalData.userid = l, wx.setStorage({
             key: "azooo_userID",
             data: l
           }), o.callback && o.callback(1, a.data.newUser);
-        } else o.callback && o.callback(0), wx.showModal({
-          title: "登录提示",
-          content: JSON.stringify(n),
-          success: function(o) {
-            o.confirm && console.log("用户点击确定");
-          }
-        });
+          
+        //临时注销跳过微信注册
+        // } else 
+        // o.callback && o.callback(0), wx.showModal({
+        //   title: "登录提示",
+        //   content: JSON.stringify(n),
+        //   success: function(o) {
+        //     o.confirm && console.log("用户点击确定1");
+        //   }
+        // });
       },
+     // 登录失败返回数据
       fail: function(o) {
         wx.showModal({
           title: "登录fail提示",
           content: JSON.stringify(o),
           success: function(o) {
-            o.confirm && console.log("用户点击确定");
+            o.confirm && console.log("用户点击确定1");
           }
         });
       },
       complete: function() {}
     });
   },
+  
   throttle: function(o, e) {
     var n;
     return function() {

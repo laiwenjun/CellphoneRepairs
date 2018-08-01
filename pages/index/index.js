@@ -1,6 +1,7 @@
 var a = getApp(), t = null, e = null, o = null, l = null, r = null, n = !0;
 
 Page({
+   //数据声明初始化
     data: {
         imgUrls: [],
         localModel: "",
@@ -33,8 +34,11 @@ Page({
         focusFlag: !1,
         activityFlag: !1
     },
+
+     //请求加载
     onLoad: function(r) {
         var n = this;
+        //
         wx.request({
             url: a.globalData.serverUrl + "viewRecord",
             data: {
@@ -49,14 +53,18 @@ Page({
             success: function(a) {
                 console.log("统计访问首页人数:", a);
             }
-        }), n.judge_city(), wx.getSystemInfo({
+        }) , 
+        
+        n.judge_city(), wx.getSystemInfo({
             success: function(a) {
                 n.setData({
                     h: a.windowHeight,
                     into: "ceshi"
                 });
             }
-        }), wx.request({
+        }),
+
+        wx.request({
             url: a.globalData.serverUrl + "getCarousel",
             data: {},
             method: "get",
@@ -68,11 +76,13 @@ Page({
                     title: "提示",
                     content: a.data.error_msg,
                     success: function(a) {
-                        a.confirm ? console.log("用户点击确定") : a.cancel && console.log("用户点击取消");
+                        a.confirm ? console.log("用户点击确定1") : a.cancel && console.log("用户点击取消");
                     }
                 });
             }
         });
+
+
         try {
             var s = wx.getStorageSync("Allbrandmodel"), i = wx.getStorageSync("AllFault");//所有故障
             if (console.log("本地缓存：", s), s && i) {
@@ -87,9 +97,11 @@ Page({
                     "dataForm.color_name": d[0].color_name,
                     "dataForm.modelName": d[0].modelName,
                     "dataForm.thumbImg": d[0].thumbImg
-                }), n.pipei(), n.setData({
+                }),
+                 n.pipei(), n.setData({
                     faultArr: n.getFault(n.data.dataForm.modelID)
-                }), wx.getLocation({
+                }),
+                 wx.getLocation({
                     type: "wgs84",
                     success: function(a) {},
                     fail: function(a) {},
@@ -130,7 +142,7 @@ Page({
                                     title: "提示",
                                     content: a.data.error_msg,
                                     success: function(a) {
-                                        a.confirm ? console.log("用户点击确定") : a.cancel && console.log("用户点击取消");
+                                        a.confirm ? console.log("用户点击确定22") : a.cancel && console.log("用户点击取消");
                                     }
                                 });
                             }
@@ -162,6 +174,7 @@ Page({
             success: function(a) {}
         });
     },
+      //点击右上角头像，显示个人中心
     bindGetUserInfo: function(t) {
         console.log("bindGetUserInfo", t), wx.getStorage({
             key: "azooo_userID",
@@ -178,6 +191,7 @@ Page({
                     }
                 });
             },
+
             fail: function() {
                 t.detail.userInfo && a.wxlogin({
                     encryptedData: t.detail.encryptedData,
@@ -255,7 +269,7 @@ Page({
                             title: "提示",
                             content: a.data.error_msg,
                             success: function(a) {
-                                a.confirm ? console.log("用户点击确定") : a.cancel && console.log("用户点击取消");
+                                a.confirm ? console.log("用户点击确定33") : a.cancel && console.log("用户点击取消");
                             }
                         });
                     }
@@ -528,7 +542,7 @@ Page({
             content: "请输入其他故障描述",
             showCancel: !1,
             success: function(a) {
-                a.confirm && (console.log("用户点击确定"), n = !0);
+                a.confirm && (console.log("用户点击确定4"), n = !0);
             }
         }), !1;
         var t = a.data.dataForm, e = a.data.selectedFaults, o = t;
@@ -551,7 +565,7 @@ Page({
                     content: "请重新点击",
                     showCancel: !1,
                     success: function(a) {
-                        a.confirm && console.log("用户点击确定");
+                        a.confirm && console.log("用户点击确定5");
                     }
                 });
             }
@@ -574,23 +588,23 @@ Page({
             content: "请先选择故障",
             showCancel: !1,
             success: function(a) {
-                a.confirm ? console.log("用户点击确定") : a.cancel && console.log("用户点击取消");
+                a.confirm ? console.log("用户点击确定6") : a.cancel && console.log("用户点击取消");
             }
         });
     },
-    openwin_small: function() {
-        wx.navigateToMiniProgram({
-            appId: "wxf52190102ef5ee33",
-            path: "pages/raise/raise",
-            extraData: {
-                foo: "bar"
-            },
-            envVersion: "release",
-            success: function(a) {
-                console.log("跳转到免费换电池小程序");
-            }
-        });
-    },
+    // openwin_small: function() {
+    //     wx.navigateToMiniProgram({
+    //         appId: "wxf52190102ef5ee33",
+    //         path: "pages/raise/raise",
+    //         extraData: {
+    //             foo: "bar"
+    //         },
+    //         envVersion: "release",
+    //         success: function(a) {
+    //             console.log("跳转到免费换电池小程序");
+    //         }
+    //     });
+    // },
     getModelArr: function() {
         var t = this;
         wx.request({

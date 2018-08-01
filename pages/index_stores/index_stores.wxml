@@ -115,6 +115,7 @@
         </view>
     </view>
 </view>
+
 <view catchtap="cancel_model" class="guzhang_alertBox" wx:if="{{changeModel_alert}}">
     <view catchtap="null_fun" class="alert_conBox">
         <view class="clearfix">

@@ -112,7 +112,7 @@ Page({
                     title: "提示",
                     content: a.data.error_msg,
                     success: function(a) {
-                        a.confirm ? console.log("用户点击确定") : a.cancel && console.log("用户点击取消");
+                        a.confirm ? console.log("用户点击确定12") : a.cancel && console.log("用户点击取消");
                     }
                 });
             }
@@ -174,7 +174,7 @@ Page({
                                     title: "提示",
                                     content: a.data.error_msg,
                                     success: function(a) {
-                                        a.confirm ? console.log("用户点击确定") : a.cancel && console.log("用户点击取消");
+                                        a.confirm ? console.log("用户点击确定2") : a.cancel && console.log("用户点击取消");
                                     }
                                 });
                             }
@@ -299,7 +299,7 @@ Page({
                             title: "提示",
                             content: a.data.error_msg,
                             success: function(a) {
-                                a.confirm ? console.log("用户点击确定") : a.cancel && console.log("用户点击取消");
+                                a.confirm ? console.log("用户点击确定15") : a.cancel && console.log("用户点击取消");
                             }
                         });
                     }
@@ -595,7 +595,7 @@ Page({
                     content: "请重新点击",
                     showCancel: !1,
                     success: function(a) {
-                        a.confirm && console.log("用户点击确定");
+                        a.confirm && console.log("用户点击确定3");
                     }
                 });
             }
