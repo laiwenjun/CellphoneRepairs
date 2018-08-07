@@ -6,12 +6,14 @@ module.exports = function(msg, page) { // page -> index page
   var cmd = msg.cmd;
   console.log("cmd = ", cmd)
   console.log("msg = ", msg)
-  if (cmd === 103) { // 登录
-    console.log("接到服务器返回10001消息")
+  if (cmd === 10002) { // 登录
+    console.log("接到服务器返回10002消息")
     //发送事件出去
     onfire.fire('testKey',msg)
-  } else if (cmd === 'XXXXX') { //
-
+  } else if (cmd === 10004) { //
+    console.log("接到服务器返回10004消息")
+    //发送事件出去
+    onfire.fire('getOrderTime', msg)
   } else if (cmd === 'XXXXX') { // 
 
   }

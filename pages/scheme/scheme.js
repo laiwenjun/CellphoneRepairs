@@ -1,5 +1,11 @@
 //选择维修方案目录1
+var onfire = require("../../utils/onfire.js");
+//声明事件eventObj，用于在脚本unLoad的时候卸载监听
+var eventObj = onfire.on('getOrderTime', function (msg) {
+  // 当消息被传递时，做具体的事
+  console.log("接到getOrderTime事件----------------！！~~", msg)
 
+})
 
 var a, e, t = getApp(), o = !0, r = !1, s = !0, i = [ 1 ], n = 0, c = 0;
 Page({
@@ -12,15 +18,17 @@ Page({
         store_time: "",
         store_phone: "",
         store_status: !1,
-        status: "72",
+        status: "73",
         openSettingBtn: !1,
-        mode: [ {
-            img: "../../images/1_2.png",
-            img_avtive: "../../images/1_1.png",
-            text: "上门维修",
-            modeID: "72",
-            class: !0
-        }, {
+        mode: [ 
+        //   {
+        //     img: "../../images/1_2.png",
+        //     img_avtive: "../../images/1_1.png",
+        //     text: "上门维修",
+        //     modeID: "72",
+        //     class: !0
+        // }, 
+        {
             img: "../../images/2_2.png",
             img_avtive: "../../images/2_1.png",
             text: "到店维修",
@@ -31,12 +39,6 @@ Page({
             img_avtive: "../../images/3_1.png",
             text: "邮寄维修",
             modeID: "74",
-            class: !1
-        }, {
-            img: "../../images/4_2.png",
-            img_avtive: "../../images/4_1.png",
-            text: "现场维修",
-            modeID: "75",
             class: !1
         } ],
         data: {
@@ -64,7 +66,7 @@ Page({
             couponPrice: 0,
             payPrice: "",
             userID: "",
-            repairWay: 72,
+            repairWay: 73,
             orderTime: "",
             desc: "",
             invitationCode: "",
@@ -101,17 +103,31 @@ Page({
                     }
                 });
             }
-        }), wx.request({
+        }), 
+        
+        //获取订单时间范围
+          // websocket.send({
+          //   cmd: 10003,   //消息号
+          //   optId: data.userID,     //用户标识，唯一ID
+          //   param: {}
+          // }
+          // );
+
+        wx.request({
             url: t.globalData.serverUrl + "getOrderTime",
             data: {},
             method: "GET",
             success: function(a) {
+              console.log("getOrderTime = ",a);
                 var e = a.data.data.time, t = JSON.parse(e.time_interval_str.trim()), r = t.weekArr;
+                console.log("t = ",t);
                 o.setData({
                     time_list: e,
                     time_interval_str: t,
                     time_list_weekArr: r
-                }), o.showTime(parseInt(e.longest_appointment)), o.showTimeDetaile(!0);
+                }), 
+                o.showTime(parseInt(e.longest_appointment)),
+                o.showTimeDetaile(!0);
             },
             fail: function() {}
         }), wx.request({
@@ -119,6 +135,7 @@ Page({
             data: {},
             method: "GET",
             success: function(e) {
+              console.log("getStores =", e)
                 0 == e.data.error_code ? a = e.data.data.store : wx.showModal({
                     title: "提示",
                     content: e.data.error_msg,
@@ -128,7 +145,7 @@ Page({
                     }
                 });
             }
-        }), o.time_limit();
+        });
     },
     onShow: function() {
         var e = this;
@@ -197,6 +214,7 @@ Page({
             success: function(t) {
                 console.log(t.data);
                 var o = t.data;
+                console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!sotreId = ",o)
                 e.setData({
                     "data.storeId": o
                 });
@@ -587,13 +605,13 @@ Page({
         });
     },
     showTimeDetaile: function(a) {
-        var e = this.data.time_list, t = this.data.time_interval_str, o = parseInt(t.sm_star_hour), r = parseInt(t.sm_star_minute), s = parseInt(t.sm_end_hour), i = parseInt(t.sm_end_minute), n = parseInt(e.seg_time_periods), c = 60 * o + r, d = 60 * s + i, l = c;
+        var e = this.data.time_list, t = this.data.time_interval_str, o = parseInt(t.sm_star_hour), r = parseInt(t.sm_star_minute), s = parseInt(t.sm_end_hour), i = parseInt(t.sm_end_minute), n = parseInt(60), c = 60 * o + r, d = 60 * s + i, l = c;
         l += n;
         var u = [];
         for (a && u.push({
             text: "尽快到达",
             class: !1
-        }); l <= d + n; ) a ? c >= 60 * new Date().getHours() + new Date().getMinutes() + parseInt(e.reservation_time) && u.push({
+        }); l <= d + n; ) a ? c >= 60 * new Date().getHours() + new Date().getMinutes() + parseInt(60) && u.push({
             text: this.transformTime(c),
             class: !1
         }) : u.push({
@@ -646,47 +664,7 @@ Page({
             });
         }
     },
-    selectMode_99: function() {
-        for (var a = this, e = this.data.mode, t = 0; t < e.length; t++) e[t].class = !1, 
-        1 == t && (e[t].class = !0);
-        this.setData({
-            status: 73,
-            mode: e,
-            "data.repairWay": 73
-        });
-        if (1 == a.data.store_status ? a.region_price(a.getScreenRepairPrice()) : (a.getScreenRepairPrice(), 
-        wx.getStorage({
-            key: "order_data",
-            success: function(e) {
-                for (var t = e.data.combTampArr, o = 0, r = 0; r < t.length; r++) if (20 === t[r].choose_failure) {
-                    o += 99;
-                    var s = a.data.data.combTampArr;
-                    s[r].price = 99, a.setData({
-                        "data.combTampArr": s
-                    });
-                } else o += parseFloat(t[r].price);
-                a.setData({
-                    "data.payPriceprice": o
-                });
-            }
-        })), wx.getStorage({
-            key: "order_data",
-            success: function(e) {
-                var t = e.data;
-                if ("请选择优惠券" != t.couponName) {
-                    var o = parseFloat(t.price) - parseFloat(t.couponPrice);
-                    o < 0 && (o = 0), a.setData({
-                        "data.payPriceprice": o
-                    });
-                }
-            }
-        }), r) {
-            for (var o = a.data.data.combTampArr, s = 0, t = 0, i = o.length; t < i; t++) 20 !== o[t].choose_failure && (s += parseFloat(o[t].price));
-            a.setData({
-                "data.payPriceprice": s
-            });
-        }
-    },
+    
     selectAddress: function() {
         var a = this;
         wx.chooseAddress ? wx.chooseAddress({
@@ -824,24 +802,7 @@ Page({
             });
         } catch (a) {}
     },
-    time_limit: function() {
-        var a = this, e = wx.getStorageSync("order_data");
-        wx.request({
-            url: t.globalData.serverUrl + "get99ScreenInfo",
-            data: {},
-            method: "POST",
-            success: function(t) {
-                if (console.log("99换屏幕活动，时间限制", t.data.data.model[0]), 0 == t.data.error_code) {
-                    for (var o = 0, r = t.data.data.model.length; o < r; o++) if (t.data.data.model[o] == e.modelID) for (var s = 0, i = e.combTampArr.length; s < i; s++) if (11 == e.combTampArr[s].choose_failure && 23 == e.combTampArr[s].detail_failure) {
-                        var n = new Date("2018/04/27 16:00:00").getTime(), c = new Date("2018/05/31 23:59:59").getTime(), d = new Date().getTime();
-                        d > n && d < c && (a.setData({
-                            yuyue_text_99: !1
-                        }), a.selectMode_99());
-                    }
-                } else console.log("99换屏幕活动，时间限制接口失败");
-            }
-        });
-    },
+    
     getScreenRepairPrice: function(a) {
         var e, o, r, s, i = this;
         e = wx.getStorageSync("order_data");

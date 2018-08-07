@@ -39,21 +39,21 @@ Page({
     onLoad: function(r) {
         var n = this;
         //
-        wx.request({
-            url: a.globalData.serverUrl + "viewRecord",
-            data: {
-                from_appid: a.globalData.appId,
-                url: "pages/index/index",
-                userID: wx.getStorageSync("azooo_userID")
-            },
-            method: "POST",
-            header: {
-                "content-type": "application/json"
-            },
-            success: function(a) {
-                console.log("统计访问首页人数:", a);
-            }
-        }) , 
+        // wx.request({
+        //     url: a.globalData.serverUrl + "viewRecord",
+        //     data: {
+        //         from_appid: a.globalData.appId,
+        //         url: "pages/index/index",
+        //         userID: wx.getStorageSync("azooo_userID")
+        //     },
+        //     method: "POST",
+        //     header: {
+        //         "content-type": "application/json"
+        //     },
+        //     success: function(a) {
+        //         console.log("统计访问首页人数:", a);
+        //     }
+        // }) , 
         
         n.judge_city(), wx.getSystemInfo({
             success: function(a) {
@@ -506,7 +506,8 @@ Page({
     },
     next: function(t) {
         var e = this;
-        console.log("next", t), wx.getStorage({
+        console.log("next", t), 
+        wx.getStorage({
             key: "azooo_userID",
             success: function(o) {
                 if (o.data) e.nextFun(); else {
