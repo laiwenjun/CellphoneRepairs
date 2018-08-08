@@ -14,13 +14,13 @@
         <view catchtap="openwin" class="row_text" data-url="order">我的订单</view>
         <view catchtap="openwin" class="arrows" data-url="order"></view>
     </view>
-    <view catchtap="openwin" class="row border_b" data-url="coupon">
+    <!-- <view catchtap="openwin" class="row border_b" data-url="coupon">
         <view catchtap="openwin" class="row_l yhq" data-url="coupon">
             <image src="../../images/yhq.png"></image>
         </view>
         <view catchtap="openwin" class="row_text" data-url="coupon">优惠券</view>
         <view catchtap="openwin" class="arrows" data-url="coupon"></view>
-    </view>
+    </view> -->
     <view bindtap="tel" class="row border_b">
         <view class="row_l lxkf">
             <image src="../../images/lxkf.png"></image>
@@ -42,7 +42,7 @@
         <view class="arrows"></view>
     </view>
 </view>
-<view bindtap="openwin" class="activity" data-url="jiyou_center_new">
+<!-- <view bindtap="openwin" class="activity" data-url="jiyou_center_new">
     <view class="activity_text01" data-url="jiyou_center_new">将加速度推荐给好友</view>
     <view class="activity_text02" data-url="jiyou_center_new">赢取
     <text data-url="jiyou_center_new" style="color:red;">现金奖励</text>
@@ -50,6 +50,6 @@
     <image data-url="jiyou_center_new" src="../../images/jiyou_006.png "></image>
 </view>
 <view class="contact">
-    <contact-button sessionFrom="小程序加速度手机维修" size="125" type="default-light"></contact-button>
+    <contact-button sessionFrom="小程序大众手机维修" size="125" type="default-light"></contact-button>
     <image src="../../images/contact.png"></image>
-</view>
+</view> -->

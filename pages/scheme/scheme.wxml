@@ -51,7 +51,7 @@
 </view>
 <view class="main_title" wx:if="{{status==72}}">30分钟上门服务，让维修变得随时随地</view>
 <view class="main_title" wx:if="{{status==73}}">全国连锁，统一门店，静候您的光临</view>
-<view class="main_title" wx:if="{{status==74}}">加速度为客户承担来回运费，请放心邮寄</view>
+<view class="main_title" wx:if="{{status==74}}">大众手机维修为客户承担来回运费，请放心邮寄</view>
 <view class="main_title" wx:if="{{status==75}}">现场急速下单，指定师傅维修</view>
 <view class="bg-w">
     <block wx:if="{{status==72}}">
@@ -163,16 +163,16 @@
             </view>
         </view>
     </block>
-    <view catchtap="openwin" class="formBox" data-url="coupon" wx:if="{{couponFlag}}">
+    <!-- <view catchtap="openwin" class="formBox" data-url="coupon" wx:if="{{couponFlag}}">
         <image catchtap="openwin" class="img" data-url="coupon" mode="scaleToFill" src="../../images/icon_youhuiquan.png"></image>
         <view catchtap="openwin" class="text" data-url="coupon" hoverClass="hover_bg">
             <view catchtap="openwin" class="{{data.couponName=='请选择优惠券'?'color_gray':''}}" data-url="coupon">{{data.couponName}}</view>
             <i catchtap="openwin" data-url="coupon"></i>
             <view class="youhui_price" wx:if="{{data.couponPrice}}">-￥{{data.couponPrice}}</view>
         </view>
-    </view>
+    </view> -->
 </view>
-<view class="bg-w" style="margin-top:20rpx;">
+<!-- <view class="bg-w" style="margin-top:20rpx;">
     <view class="formBox">
         <view class="remark" style="width:120px">兑换码</view>
         <view class="text">
@@ -181,7 +181,7 @@
         <view class="youhui_price02" wx:if="{{data.duihuan_price}}">-￥{{data.duihuan_price}}</view>
         <view catchtap="exchange_fun" class="determine" hoverClass="hover_bg_on">兑换</view>
     </view>
-</view>
+</view> -->
 <view class="bg-w" style="margin-top:20rpx;">
     <view class="formBox">
         <view class="remark">备注</view>

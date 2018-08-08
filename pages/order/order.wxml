@@ -11,10 +11,10 @@
     <view class="clearfix row_b">
         <text>合计：￥{{item.totalPrice}}</text>
         <text class="f-right {{item.isComment==0&&item.status==2?'marginR':'12'}}">{{item.addTime}}</text>
-        <text catchtap="openwin" class="row_b_btn" data-masterid="{{item.masterID}}" data-orderid="{{item.orderID}}" data-url="appraise" hidden="{{item.status==2?false:true}}" wx:if="{{item.isComment==0}}">评价</text>
+        <!-- <text catchtap="openwin" class="row_b_btn" data-masterid="{{item.masterID}}" data-orderid="{{item.orderID}}" data-url="appraise" hidden="{{item.status==2?false:true}}" wx:if="{{item.isComment==0}}">评价</text> -->
     </view>
 </view>
-<view class="contact">
+<!-- <view class="contact">
     <contact-button sessionFrom="小程序加速度手机维修" size="125" type="default-light"></contact-button>
     <image src="../../images/contact.png"></image>
-</view>
+</view> -->
