@@ -1,3 +1,4 @@
+var onfire = require("../../utils/onfire.js");
 //获取用户当前最近的门店定位
 var t, e = getApp(), o = 0, a = 0;
 Page({
@@ -22,41 +23,57 @@ Page({
                 });
             },
             complete: function() {
-                wx.request({
-                    url: e.globalData.serverUrl + "getStores",
-                    data: {
-                        lat: o,
-                        lng: a
-                    },
-                    method: "GET",
-                    header: {
-                        "content-type": "application/json"
-                    },
-                    success: function(e) {
-                        if (console.log(e), 0 == e.data.error_code) {
-                            var o = e.data.data.store;
-                            if (o && o.length) {
-                                for (var a = 0; a < o.length; a++) -1 != o[a].repairWay.indexOf("72") && (o[a].status_way = !0), 
-                                100 == o[a].id && t && o.splice(a, 1);
-                                s.setData({
-                                    data: o
-                                });
-                            } else wx.showModal({
-                                title: "提示",
-                                content: "没有门店",
-                                success: function(t) {
-                                    t.confirm ? console.log("用户点击确定") : t.cancel && console.log("用户点击取消");
-                                }
-                            });
-                        } else wx.showModal({
-                            title: "提示",
-                            content: e.data.error_msg,
-                            success: function(t) {
-                                t.confirm ? console.log("用户点击确定") : t.cancel && console.log("用户点击取消");
-                            }
-                        });
-                    }
-                });
+              //请求门店信息
+              websocket.send({
+                cmd: 10007, //消息号
+                optId: t.globalData.userid, //用户标识，唯一ID
+                param: {
+                
+                }
+              });
+
+              var rspStores = onfire.on('rspStores', function (msg) {
+                // 当消息被传递时，做具体的事
+                console.log("接到rspStores事件----------------！！~~", msg)
+                var rsp = JSON.parse(msg)
+                
+              })
+
+                // wx.request({
+                //     url: e.globalData.serverUrl + "getStores",
+                //     data: {
+                //         lat: o,
+                //         lng: a
+                //     },
+                //     method: "GET",
+                //     header: {
+                //         "content-type": "application/json"
+                //     },
+                //     success: function(e) {
+                //         if (console.log(e), 0 == e.data.error_code) {
+                //             var o = e.data.data.store;
+                //             if (o && o.length) {
+                //                 for (var a = 0; a < o.length; a++) -1 != o[a].repairWay.indexOf("72") && (o[a].status_way = !0), 
+                //                 100 == o[a].id && t && o.splice(a, 1);
+                //                 s.setData({
+                //                     data: o
+                //                 });
+                //             } else wx.showModal({
+                //                 title: "提示",
+                //                 content: "没有门店",
+                //                 success: function(t) {
+                //                     t.confirm ? console.log("用户点击确定") : t.cancel && console.log("用户点击取消");
+                //                 }
+                //             });
+                //         } else wx.showModal({
+                //             title: "提示",
+                //             content: e.data.error_msg,
+                //             success: function(t) {
+                //                 t.confirm ? console.log("用户点击确定") : t.cancel && console.log("用户点击取消");
+                //             }
+                //         });
+                //     }
+                // });
             }
         }), wx.getSetting({
             success: function(t) {

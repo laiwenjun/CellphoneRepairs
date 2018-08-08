@@ -14,7 +14,17 @@ module.exports = function(msg, page) { // page -> index page
     console.log("接到服务器返回10004消息")
     //发送事件出去
     onfire.fire('getOrderTime', msg)
-  } else if (cmd === 'XXXXX') { // 
-
+  } else if (cmd === 10006) { // 
+    console.log("接到服务器返回10006消息")
+    //发送事件出去
+    onfire.fire('rspScheme', msg)
+  } else if (cmd === 10008) { // 
+    console.log("接到服务器返回10008消息")
+    //发送事件出去
+    onfire.fire('rspStores', msg)
+  } else if (cmd === 10010) { // 
+    console.log("接到服务器返回10010消息")
+    //发送事件出去
+    onfire.fire('rspOrder', msg)
   }
 }

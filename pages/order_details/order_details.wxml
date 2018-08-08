@@ -84,23 +84,23 @@
         <image bindtap="previewImage" data-url="{{ktem}}" src="{{ktem}}" wx:for="{{info.userUploadImgs}}" wx:for-item="ktem" wx:key="{{index}}"></image>
     </view>
 </view>
-<view class="block youCon">
+<!-- <view class="block youCon">
     <text>优惠</text>
     <text class="youCon_text">{{info.couponName}}</text>
-</view>
+</view> -->
 <view class="block priceCon">
     <view>
         <text>维修价格</text>
         <text class="priceCon_r">￥{{info.totalPrice}}</text>
     </view>
-    <view>
+    <!-- <view>
         <text>优惠价格</text>
         <text class="priceCon_r">-￥{{info.couponPrice}}</text>
-    </view>
-    <view>
+    </view> -->
+    <!-- <view>
         <text>订单改价</text>
         <text class="priceCon_r">{{info.spreads}}</text>
-    </view>
+    </view> -->
     <view>
         <text>预计需支付</text>
         <text class="priceCon_r">￥{{info.payPrice}}</text>
@@ -124,11 +124,11 @@
     </view>
 </view>
 <view class="payCon clearfix">
-    <text catchtap="backRepair" data-orderid="{{info.orderID}}" hidden="{{info.status==2?false:true}}">返修</text>
+    <!-- <text catchtap="backRepair" data-orderid="{{info.orderID}}" hidden="{{info.status==2?false:true}}">返修</text>
     <text catchtap="snFun" data-ordersn="{{info.orderSn}}" hidden="{{info.status==2?false:true}}">维修凭证</text>
     <text catchtap="appraise" data-masterid="{{info.masterID}}" data-orderid="{{info.orderID}}" hidden="{{info.status==2&&info.isComment==0?false:true}}">评价</text>
     <text catchtap="applyInvoice" class="pay" data-name="{{info.nickName}}" data-orderid="{{info.orderID}}" data-phone="{{info.orderPhone}}" data-price="{{info.payPrice}}" data-url="invoice" wx:if="{{info.status==2&&info.isInvoice==0}}">申请发票</text>
-    <text catchtap="applyInvoice" class="pay" data-name="{{info.nickName}}" data-orderid="{{info.orderID}}" data-phone="{{info.orderPhone}}" data-price="{{info.payPrice}}" data-url="invoice_status" wx:if="{{info.status==2&&info.isInvoice==1}}">查看发票</text>
+    <text catchtap="applyInvoice" class="pay" data-name="{{info.nickName}}" data-orderid="{{info.orderID}}" data-phone="{{info.orderPhone}}" data-price="{{info.payPrice}}" data-url="invoice_status" wx:if="{{info.status==2&&info.isInvoice==1}}">查看发票</text> -->
     <text catchtap="cancelOrder" hidden="{{info.status==0?false:true}}">取消订单</text>
     <text catchtap="pay" class="pay" data-orderid="{{info.orderID}}" hidden="{{info.status==0?false:true}}">付款</text>
 </view>

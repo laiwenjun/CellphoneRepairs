@@ -33,8 +33,8 @@ Page({
                             var t = e.data.data.info;
                             t.colorName || (t.colorName = ""), t.couponName || (t.couponName = ""), t.desc || (t.desc = ""), 
                             t.orderTime ? "尽快到达" != t.orderTime && (t.orderTime = o.getTime(new Date(1e3 * parseInt(t.orderTime)))) : t.orderTime = t.addTime;
-                            var a = (parseFloat(t.totalPrice) - parseFloat(t.couponPrice) + parseFloat(t.spreads)).toFixed(2);
-                            t.payPrice = a >= 0 ? a : 0, parseFloat(t.spreads) >= 0 ? t.spreads = "￥" + t.spreads : t.spreads = "-￥" + t.spreads, 
+                            // var a = (parseFloat(t.totalPrice) - parseFloat(t.couponPrice) + parseFloat(t.spreads)).toFixed(2);
+                            // t.payPrice = a >= 0 ? a : 0, parseFloat(t.spreads) >= 0 ? t.spreads = "￥" + t.spreads : t.spreads = "-￥" + t.spreads, 
                             o.setData({
                                 info: t
                             });
