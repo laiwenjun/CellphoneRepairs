@@ -1,5 +1,5 @@
 var msgHandler = require('msgHandler.js');
-var webSocketUrl = 'ws://192.168.1.57:9003/websocket',
+var webSocketUrl = 'ws://192.168.0.107:9003/websocket',
   socketOpened = false, // 标记websocket是否已经打开
   socketMsgQueue = [],
   connCallback = null,

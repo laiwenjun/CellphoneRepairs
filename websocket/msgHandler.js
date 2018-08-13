@@ -26,5 +26,13 @@ module.exports = function(msg, page) { // page -> index page
     console.log("接到服务器返回10010消息")
     //发送事件出去
     onfire.fire('rspOrder', msg)
+  } else if (cmd === 10012) { // 
+    console.log("接到服务器返回10012消息")
+    //发送事件出去
+    onfire.fire('rspDetailedOrder', msg)
+  } else if (cmd === 10014) { // 
+    console.log("接到服务器返回10014消息")
+    //发送事件出去
+    onfire.fire('rspCancelOrder', msg)
   }
 }

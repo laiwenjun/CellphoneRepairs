@@ -1,3 +1,4 @@
+var websocket = require('../../websocket/connect.js');
 var onfire = require("../../utils/onfire.js");
 //获取用户当前最近的门店定位
 var t, e = getApp(), o = 0, a = 0;
@@ -24,9 +25,11 @@ Page({
             },
             complete: function() {
               //请求门店信息
+              var userId = wx.getStorageSync("azooo_userID")
+              console.log("请求门店信息-=-------userId = ", userId)
               websocket.send({
                 cmd: 10007, //消息号
-                optId: t.globalData.userid, //用户标识，唯一ID
+                optId: userId, //用户标识，唯一ID
                 param: {
                 
                 }
@@ -35,8 +38,9 @@ Page({
               var rspStores = onfire.on('rspStores', function (msg) {
                 // 当消息被传递时，做具体的事
                 console.log("接到rspStores事件----------------！！~~", msg)
-                var rsp = JSON.parse(msg)
-                
+                //var rspJson = JSON.stringify(msg)
+                var rspStr = JSON.parse(msg.param)
+                console.log("JSON.parse(rspStores)----------------！！~~", rspStr.store[0])
               })
 
                 // wx.request({

@@ -1,4 +1,5 @@
 //选择维修方案目录1
+var websocket = require('../../websocket/connect.js');
 var onfire = require("../../utils/onfire.js");
 //声明事件eventObj，用于在脚本unLoad的时候卸载监听
 var eventObj = onfire.on('getOrderTime', function(msg) {
@@ -308,14 +309,15 @@ Page({
       u < 10 && (u = "0" + u), m < 10 && (m = "0" + m), r = l + "-" + u + "-" + m + " " + p,
         "尽快到达" == p && (r = 0), n = !0;
     } else if (73 == d.repairWay) {
-      if ("" == d.storeId || !c.data.store_status) return wx.showModal({
-        title: "提示",
-        content: "请选择门店",
-        showCancel: !1,
-        success: function(a) {
-          a.confirm && console.log("用户点击确定");
-        }
-      }), !1;
+      console.log("111111111111")
+      // if ("" == d.storeId || !c.data.store_status) return wx.showModal({
+      //   title: "提示",
+      //   content: "请选择门店",
+      //   showCancel: !1,
+      //   success: function(a) {
+      //     a.confirm && console.log("用户点击确定");
+      //   }
+      // }), !1;
       if ("" == c.data.name02) return wx.showModal({
         title: "提示",
         content: "请输入您的姓名",
@@ -428,13 +430,17 @@ Page({
         console.log("from_appid", a);
       }
       //请求提交维修信息
+      var userId = wx.getStorageSync("azooo_userID")
+      console.log(o[0])
+
       websocket.send({
         cmd: 10005, //消息号
-        optId: t.globalData.userid, //用户标识，唯一ID
+        optId: userId, //用户标识，唯一ID
         param: {
           brandName: d.brandName,
           modelName: d.modelName,
           colorName: w,
+          comIds: o,
           repairWay: d.repairWay,
           desc: d.desc,
           name: d.name,
@@ -448,10 +454,13 @@ Page({
       var rspScheme = onfire.on('rspScheme', function (msg) {
         // 当消息被传递时，做具体的事
         console.log("接到rspScheme事件----------------！！~~", msg)
-        var rsp = JSON.parse(msg)
+        console.log("c.data.status----------------！！~~", c.data.status)
+        console.log("d.storeId----------------！！~~", d.storeId)
+        var rsp = JSON.parse(msg.param)
         wx.redirectTo({
-          url: "../success/success?id=" + rsp.param.id + "&status=" + c.data.status + "&storeId=" + d.storeId
+          url: "../success/success?id=" + rsp.id + "&status=" + c.data.status + "&storeId=" + d.storeId
           })
+        s = !0
       })
 
       // //请求提交维修信息
