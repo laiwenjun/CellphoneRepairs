@@ -35,4 +35,9 @@ module.exports = function(msg, page) { // page -> index page
     //发送事件出去
     onfire.fire('rspCancelOrder', msg)
   }
+  else if (cmd === 10016) { // 
+    console.log("接到服务器返回10016消息")
+    //发送事件出去
+    onfire.fire('rspAllRepairList', msg)
+  }
 }

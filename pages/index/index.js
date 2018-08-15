@@ -1,5 +1,6 @@
 var a = getApp(), t = null, e = null, o = null, l = null, r = null, n = !0;
-
+var websocket = require('../../websocket/connect.js');
+var onfire = require("../../utils/onfire.js");
 Page({
    //数据声明初始化
     data: {
@@ -107,46 +108,62 @@ Page({
                     fail: function(a) {},
                     complete: function(r) {
                         var s = "", i = "";
-                        null != r.latitude && (s = r.latitude, i = r.longitude), wx.request({
-                            url: a.globalData.serverUrl + "getAllRepairList",
-                            data: {
-                                latitude: s,
-                                longitude: i
-                            },
-                            method: "POST",
-                            success: function(a) {
-                                if (console.log("重新获取所有品牌型号故障信息", a.data), 0 == a.data.error_code) {
-                                    t = a.data.data.brandList, e = a.data.data.modelList, o = a.data.data.lagerRepairList, 
-                                    l = a.data.data.repairDetailList;
-                                    var r = n.selectBrand(11);
-                                    a.data.data.firstModelList = r;
-                                    try {
-                                        wx.setStorage({
-                                            key: "Allbrandmodel",
-                                            data: {
-                                                firstModelList: r,
-                                                brandList: t,
-                                                modelList: e
-                                            }
-                                        }), wx.setStorage({
-                                            key: "AllFault",
-                                            data: {
-                                                lagerRepairList: o,
-                                                repairDetailList: l
-                                            }
-                                        }), console.log("保存AllRepairList在本地成功", a);
-                                    } catch (a) {
-                                        console.log("e", a);
-                                    }
-                                } else wx.showModal({
-                                    title: "提示",
-                                    content: a.data.error_msg,
-                                    success: function(a) {
-                                        a.confirm ? console.log("用户点击确定22") : a.cancel && console.log("用户点击取消");
-                                    }
-                                });
+                        var userId = wx.getStorageSync("azooo_userID");
+                      null != r.latitude && (s = r.latitude, i = r.longitude),
+                        websocket.send({
+                          cmd: 10015, //消息号
+                          optId: userId, //用户标识，唯一ID
+                          param: {
                             }
                         });
+
+                      var rspScheme = onfire.on('rspAllRepairList', function (msg) {
+                        // 当消息被传递时，做具体的事
+                        console.log("接到rspAllRepairList事件----------------！！~~", msg)
+                        var rsp = JSON.parse(msg.param)
+                        
+                      })
+                      // null != r.latitude && (s = r.latitude, i = r.longitude),
+                      //    wx.request({
+                      //       url: a.globalData.serverUrl + "getAllRepairList",
+                      //       data: {
+                      //           latitude: s,
+                      //           longitude: i
+                      //       },
+                      //       method: "POST",
+                      //       success: function(a) {
+                      //           if (console.log("重新获取所有品牌型号故障信息", a.data), 0 == a.data.error_code) {
+                      //               t = a.data.data.brandList, e = a.data.data.modelList, o = a.data.data.lagerRepairList, 
+                      //               l = a.data.data.repairDetailList;
+                      //               var r = n.selectBrand(11);
+                      //               a.data.data.firstModelList = r;
+                      //               try {
+                      //                   wx.setStorage({
+                      //                       key: "Allbrandmodel",
+                      //                       data: {
+                      //                           firstModelList: r,
+                      //                           brandList: t,
+                      //                           modelList: e
+                      //                       }
+                      //                   }), wx.setStorage({
+                      //                       key: "AllFault",
+                      //                       data: {
+                      //                           lagerRepairList: o,
+                      //                           repairDetailList: l
+                      //                       }
+                      //                   }), console.log("保存AllRepairList在本地成功", a);
+                      //               } catch (a) {
+                      //                   console.log("e", a);
+                      //               }
+                      //           } else wx.showModal({
+                      //               title: "提示",
+                      //               content: a.data.error_msg,
+                      //               success: function(a) {
+                      //                   a.confirm ? console.log("用户点击确定22") : a.cancel && console.log("用户点击取消");
+                      //               }
+                      //           });
+                      //       }
+                      //   });
                     }
                 });
             } else n.ajaxAllRepairList();
