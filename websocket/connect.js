@@ -1,5 +1,6 @@
 var msgHandler = require('msgHandler.js');
-var webSocketUrl = 'ws://119.23.65.177:8103/websocket',
+//119.23.65.177
+var webSocketUrl = 'ws://www.dashengqp.gd.cn:8103/websocket',
   socketOpened = false, // 标记websocket是否已经打开
   socketMsgQueue = [],
   connCallback = null,
@@ -31,7 +32,7 @@ function initEvent() { // 初始化一些webSocket事件
     connCallback && connCallback.call(null);
   });
   wx.onSocketMessage(function (res) { // 收到服务器消息时的处理
-    console.log('received msg: ' + res.data);
+    //console.log('received msg: ' + res.data);
     // msgReceived.callback && msgReceived.callback.call(null, res.data, ...msgReceived.params);
     msgHandler(res.data);
   });
