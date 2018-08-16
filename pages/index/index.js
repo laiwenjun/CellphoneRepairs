@@ -90,7 +90,7 @@ Page({
                 t = s.brandList, e = s.modelList, o = i.lagerRepairList, l = i.repairDetailList;
                 var d = n.selectBrand(t[0].brandID);
               console.log("d= ", d)
-                
+              
                 n.setData({
                     brandArr: t,
                     modelArr: d,
