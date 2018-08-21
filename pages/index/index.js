@@ -119,19 +119,19 @@ Page({
               var s = "",
                 i = "";
 
-wx.getStorage({
-        key: "azooo_userID",
-        success: function (e) {
-          console.log("已登录")
-        },
+// wx.getStorage({
+//         key: "azooo_userID",
+//         success: function (e) {
+//           console.log("已登录")
+//         },
 
-        fail: function () {
-           a.wxlogin({
-            callback: function (a) {
-            }
-          });
-        }
-      });
+//         fail: function () {
+//            a.wxlogin({
+//             callback: function (a) {
+//             }
+//           });
+//         }
+//       });
               var userId = wx.getStorageSync("azooo_userID");
               null != r.latitude && (s = r.latitude, i = r.longitude),
                 console.log("请求品牌型号故障信息--------", userId)
@@ -743,19 +743,19 @@ wx.getStorage({
   null_fun: function() {},
   onShow: function() {
     n = !0, this.show_selModel();
-    // wx.getStorage({
-    //   key: "azooo_userID",
-    //   success: function (e) {
-    //     console.log("已登录")
-    //   },
+    wx.getStorage({
+      key: "azooo_userID",
+      success: function (e) {
+        console.log("已登录")
+      },
 
-    //   fail: function () {
-    //      a.wxlogin({
-    //       callback: function (a) {
-    //       }
-    //     });
-    //   }
-    // });
+      fail: function () {
+         a.wxlogin({
+          callback: function (a) {
+          }
+        });
+      }
+    });
   },
   onShareAppMessage: function() {
     return {

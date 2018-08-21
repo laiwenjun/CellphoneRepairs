@@ -13,10 +13,11 @@ var eventObj = onfire.on('testKey', function (msg) {
   wx.setStorage({
     key: "azooo_userID",
     data: l
-  }),
-  wx.navigateTo({
-    url: "../my/my"
-  });
+  })
+  // ,
+  // wx.navigateTo({
+  //   url: "../my/my"
+  // });
 })
 
 
