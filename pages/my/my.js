@@ -18,12 +18,12 @@ Page({
     },
     tel: function() {
         wx.makePhoneCall({
-            phoneNumber: "4006-233-866"
+          phoneNumber: "18620557755"
         });
     },
     telJoin: function() {
         wx.makePhoneCall({
-            phoneNumber: "16620137673"
+          phoneNumber: "18620557755"
         });
     },
     onReady: function() {},

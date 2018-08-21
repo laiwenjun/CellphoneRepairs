@@ -1,6 +1,7 @@
 var msgHandler = require('msgHandler.js');
-//119.23.65.177
-var webSocketUrl = 'ws://www.dashengqp.gd.cn:8103/websocket',
+//'ws://119.23.65.177:8103/websocket',
+//'ws://www.dashengqp.gd.cn:8103/websocket',
+var webSocketUrl = 'ws://192.168.0.102:8103/websocket',
   socketOpened = false, // 标记websocket是否已经打开
   socketMsgQueue = [],
   connCallback = null,
