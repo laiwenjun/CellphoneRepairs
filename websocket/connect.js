@@ -41,7 +41,10 @@ function initEvent() { // 初始化一些webSocket事件
     console.log('webSocket fail', res);
   });
 }
-
+wx.onSocketClose(function (res) {
+  console.log('WebSocket 已关闭！')
+  connect()
+})
 function sendSocketMessage(msg) {
   if (typeof (msg) === 'object') {
     msg = JSON.stringify(msg);

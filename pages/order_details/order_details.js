@@ -373,6 +373,7 @@ Page({
     }),
     //请求取消订单
       console.log("a= ", a)
+    console.log("cancelReason= ", n)
     websocket.send({
       cmd: 10013, //消息号
       optId: wx.getStorageSync("azooo_userID"), //用户标识，唯一ID
