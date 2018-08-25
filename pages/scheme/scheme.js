@@ -431,7 +431,7 @@ Page({
       }
       //请求提交维修信息
       var userId = wx.getStorageSync("azooo_userID")
-      console.log(o[0])
+      console.log("oooooo==",o)
 
       websocket.send({
         cmd: 10005, //消息号
@@ -447,10 +447,11 @@ Page({
           phone: d.phone,
           city: d.city,
           district: d.district,
-          address: d.address
+          address: d.address,
+          price: d.price
         }
       });
-
+      console.log("d.price",d.price)
       var rspScheme = onfire.on('rspScheme', function (msg) {
         // 当消息被传递时，做具体的事
         console.log("接到rspScheme事件----------------！！~~", msg)
