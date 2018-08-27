@@ -44,6 +44,7 @@ Page({
   onPullDownRefresh: function(t) {},
   onReachBottom: function() {
     var i = this;
+    var userId = wx.getStorageSync("azooo_userID")
     //if (!e) return console.log("e = ", e), !1;
     e = !1, console.log("--------上拉刷新-------", o), wx.showNavigationBarLoading(), wx.showToast({
         title: "加载中...",
@@ -51,11 +52,11 @@ Page({
         duration: 1e4,
         mask: !0
       }),
-
+      
       //请求所有订单信息
       websocket.send({
         cmd: 10009, //消息号
-        optId: wx.getStorageSync("azooo_userID"), //用户标识，唯一ID
+      optId: userId, //用户标识，唯一ID
         param: {
           userId: t.globalData.userid
         }
