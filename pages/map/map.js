@@ -1,13 +1,13 @@
 //地图显示
 Page({
     data: {
-        latitude: 23.07109,
-        longitude: 113.31279,
+      latitude: 23.1353360000,
+      longitude: 113.2714290000,
         markers: [ {
             id: 1,
-            latitude: 23.07109,
-            longitude: 113.31279,
-            name: "广州创投小镇O2O创新实验室一楼发布厅"
+          latitude: 23.1353360000, 
+          longitude: 113.2714290000,
+          name: "广东省广州市越秀区吉祥路79号"
         } ]
     },
     onLoad: function(n) {},

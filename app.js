@@ -53,7 +53,7 @@ App({
   globalData: {
     userInfo: null,
     userid: null,
-    serverUrl: "https://small2.azooo.com/api/",
+    serverUrl: "https://small2.azooo.com/api/s",
     appId: null,
     scene: null
   },

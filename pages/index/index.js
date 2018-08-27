@@ -69,25 +69,25 @@ Page({
             into: "ceshi"
           });
         }
-      }),
+      })
+      // ,
+      // wx.request({
+      //   url: a.globalData.serverUrl + "getCarousel",
+      //   data: {},
+      //   method: "get",
+      //   success: function(a) {
+      //     console.log("获取轮播图片", a), 0 == a.data.error_code ? n.setData({
+      //       imgUrls: a.data.data.carousel
 
-      wx.request({
-        url: a.globalData.serverUrl + "getCarousel",
-        data: {},
-        method: "get",
-        success: function(a) {
-          console.log("获取轮播图片", a), 0 == a.data.error_code ? n.setData({
-            imgUrls: a.data.data.carousel
-
-          }) : wx.showModal({
-            title: "提示",
-            content: a.data.error_msg,
-            success: function(a) {
-              a.confirm ? console.log("用户点击确定1") : a.cancel && console.log("用户点击取消");
-            }
-          });
-        }
-      });
+      //     }) : wx.showModal({
+      //       title: "提示",
+      //       content: a.data.error_msg,
+      //       success: function(a) {
+      //         a.confirm ? console.log("用户点击确定1") : a.cancel && console.log("用户点击取消");
+      //       }
+      //     });
+      //   }
+      // });
 
 
     try {
@@ -456,14 +456,14 @@ Page({
               });
             }
         }
-      wx.request({
-        url: a.globalData.serverUrl + "markUserPhone",
-        data: {
-          modelName: l
-        },
-        method: "POST",
-        success: function(a) {}
-      });
+      // wx.request({
+      //   url: a.globalData.serverUrl + "markUserPhone",
+      //   data: {
+      //     modelName: l
+      //   },
+      //   method: "POST",
+      //   success: function(a) {}
+      // });
     } catch (a) {
       console.log(a);
     }
@@ -787,20 +787,7 @@ Page({
   //         }
   //     });
   // },
-  getModelArr: function() {
-    var t = this;
-    wx.request({
-      url: a.globalData.serverUrl + "battery/getModel",
-      data: {},
-      method: "post",
-      success: function(a) {
-        var e = wx.getSystemInfoSync().model;
-        for (var o in a.data.data.modelList) - 1 != a.data.data.modelList[o].smallModelName.split(";").indexOf(e) && t.setData({
-          is_ico_start: a.data.data.is_start
-        });
-      }
-    });
-  },
+  
   judge_city: function() {
     var a = this;
     wx.getLocation({
@@ -809,7 +796,7 @@ Page({
         console.log("获取当前经纬度", t);
         var e = t.latitude + "," + t.longitude;
         a.find_location(e, function(t) {
-          console.log("根据经纬度获取当前位置", JSON.parse(t.data.match(/\{.*\}/)[0] || null)), -1 != t.data.indexOf("广东省") && a.getModelArr();
+          console.log("根据经纬度获取当前位置", JSON.parse(t.data.match(/\{.*\}/)[0] || null));
         });
       },
       fail: function(a) {}
@@ -820,7 +807,7 @@ Page({
       url: "https://api.map.baidu.com/geocoder/v2/?callback=renderReverse&output=json&pois=0&ak=xx4BmpHkOMyUNjPi0dyYsou4L1tqh65v",
       method: "GET",
       data: {
-        location: a
+        location: a 
       },
       header: {
         "content-type": "application/json"
