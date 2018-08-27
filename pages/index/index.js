@@ -817,7 +817,7 @@ Page({
   },
   find_location: function(a, t) {
     wx.request({
-      url: "https://api.map.baidu.com/geocoder/v2/?callback=renderReverse&output=json&pois=0&ak=SalVkqMoNKh8lZugiLBICl0B",
+      url: "https://api.map.baidu.com/geocoder/v2/?callback=renderReverse&output=json&pois=0&ak=xx4BmpHkOMyUNjPi0dyYsou4L1tqh65v",
       method: "GET",
       data: {
         location: a

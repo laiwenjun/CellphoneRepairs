@@ -310,14 +310,14 @@ Page({
         "尽快到达" == p && (r = 0), n = !0;
     } else if (73 == d.repairWay) {
       console.log("111111111111")
-      // if ("" == d.storeId || !c.data.store_status) return wx.showModal({
-      //   title: "提示",
-      //   content: "请选择门店",
-      //   showCancel: !1,
-      //   success: function(a) {
-      //     a.confirm && console.log("用户点击确定");
-      //   }
-      // }), !1;
+      if ("" == d.storeId || !c.data.store_status) return wx.showModal({
+        title: "提示",
+        content: "请选择门店",
+        showCancel: !1,
+        success: function(a) {
+          a.confirm && console.log("用户点击确定");
+        }
+      }), !1;
       if ("" == c.data.name02) return wx.showModal({
         title: "提示",
         content: "请输入您的姓名",
