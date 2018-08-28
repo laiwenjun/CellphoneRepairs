@@ -45,15 +45,24 @@ Page({
           var rspStr = JSON.parse(msg.param)
           console.log("JSON.parse(rspStores)----------------！！~~", rspStr.store[0])
 
-          if (rspStr.store && rspStr.store.length) {
-            for (var a = 0; a < rspStr.store.length; a++) - 1 != rspStr.store[a].repairWay.indexOf("72") && (rspStr.store[a].status_way = !0),
-              100 == rspStr.store[a].id && t && rspStr.store.splice(a, 1);
-            s.setData({
-              data: rspStr.store
+          if (rspStr) {
+            var o = rspStr.store;
+            if (o && o.length) {
+              // for (var a = 0; a < o.length; a++) - 1 != o[a].repairWay.indexOf("72") && (o[a].status_way = !0),
+              //   100 == o[a].id && t && o.splice(a, 1);
+              s.setData({
+                data: o
+              });
+            } else wx.showModal({
+              title: "提示",
+              content: "没有门店",
+              success: function(t) {
+                t.confirm ? console.log("用户点击确定") : t.cancel && console.log("用户点击取消");
+              }
             });
           } else wx.showModal({
             title: "提示",
-            content: "没有门店",
+            content: e.data.error_msg,
             success: function(t) {
               t.confirm ? console.log("用户点击确定") : t.cancel && console.log("用户点击取消");
             }
@@ -96,6 +105,8 @@ Page({
         //         });
         //     }
         // });
+
+        
       }
     }), wx.getSetting({
       success: function(t) {
@@ -108,6 +119,7 @@ Page({
   clickAddress: function(t) {
     try {
       wx.setStorageSync("order_storeId", t.target.dataset.id), console.log("order_storeId:" + t.target.dataset.id);
+      console.log("stores页面的保存本地数据成功 ", t.target.dataset.id), console.log(t);
     } catch (t) {
       console.log("stores页面的保存本地数据catch"), console.log(t);
     }

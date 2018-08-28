@@ -2,7 +2,7 @@
 var websocket = require('../../websocket/connect.js');
 var onfire = require("../../utils/onfire.js");
 //声明事件eventObj，用于在脚本unLoad的时候卸载监听
-var eventObj = onfire.on('getOrderTime', function(msg) {
+var eventObj = onfire.on('getOrderTime', function (msg) {
   // 当消息被传递时，做具体的事
   console.log("接到getOrderTime事件----------------！！~~", msg)
 
@@ -93,160 +93,149 @@ Page({
     couponFlag: !0,
     yuyue_text_99: !0
   },
-  onLoad: function(e) {
+  onLoad: function (e) {
     var o = this;
     wx.getStorage({
-        key: "azooo_userID",
-        success: function(a) {
-          o.setData({
-            "data.userID": a.data
-          });
-        },
-        fail: function() {
-          wx.showModal({
-            title: "温馨提示",
-            content: "获取userid失败，请返回首页重新进入",
-            success: function(a) {
-              a.confirm && console.log("用户点击确定");
-            }
-          });
-        }
-      }),
+      key: "azooo_userID",
+      success: function (a) {
+        o.setData({
+          "data.userID": a.data
+        });
+      },
+      fail: function () {
+        wx.showModal({
+          title: "温馨提示",
+          content: "获取userid失败，请返回首页重新进入",
+          success: function (a) {
+            a.confirm && console.log("用户点击确定");
+          }
+        });
+      }
+    })
 
-      //获取订单时间范围
-      // websocket.send({
-      //   cmd: 10003,   //消息号
-      //   optId: data.userID,     //用户标识，唯一ID
-      //   param: {}
-      // }
-      // );
+    //获取订单时间范围
+    // websocket.send({
+    //   cmd: 10003,   //消息号
+    //   optId: data.userID,     //用户标识，唯一ID
+    //   param: {}
+    // }
+    // );
 
-      wx.request({
-        url: t.globalData.serverUrl + "getOrderTime",
-        data: {},
-        method: "GET",
-        success: function(a) {
-          console.log("getOrderTime = ", a);
-          var e = a.data.data.time,
-            t = JSON.parse(e.time_interval_str.trim()),
-            r = t.weekArr;
-          console.log("t = ", t);
-          o.setData({
-              time_list: e,
-              time_interval_str: t,
-              time_list_weekArr: r
-            }),
-            o.showTime(parseInt(e.longest_appointment)),
-            o.showTimeDetaile(!0);
-        },
-        fail: function() {}
-      }), wx.request({
-        url: t.globalData.serverUrl + "getStores",
-        data: {},
-        method: "GET",
-        success: function(e) {
-          console.log("getStores =", e)
-          0 == e.data.error_code ? a = e.data.data.store : wx.showModal({
-            title: "提示",
-            content: e.data.error_msg,
-            showCancel: !1,
-            success: function(a) {
-              a.confirm && console.log("用户点击确定");
-            }
-          });
-        }
-      });
+    //请求门店信息
+    var userId = wx.getStorageSync("azooo_userID")
+    console.log("请求门店信息-=-------userId = ", userId)
+    websocket.send({
+      cmd: 10007, //消息号
+      optId: userId, //用户标识，唯一ID
+      param: {
+        lat: o,
+        lng: a
+      }
+    });
+
+    var rspStores = onfire.on('rspStores', function (msg) {
+      // 当消息被传递时，做具体的事
+      console.log("接到rspStores事件----------------！！~~", msg)
+      //var rspJson = JSON.stringify(msg)
+      var rspStr = JSON.parse(msg.param)
+      console.log("JSON.parse(rspStores)----------------！！~~", rspStr.store[0])
+
+      a = rspStr.store
+
+    })
+
   },
-  onShow: function() {
+  onShow: function () {
     var e = this;
     if (wx.getSetting ? wx.getSetting({
-        success: function(a) {
-          console.log(a), !1 === a.authSetting["scope.address"] ? e.setData({
-            openSettingBtn: !1
-          }) : e.setData({
-            openSettingBtn: !0
-          });
-        }
-      }) : wx.showModal({
-        title: "提示",
-        content: "您的微信版本过低，暂不支持此功能，可以下载最新微信版本，获取更多的小程序功能",
-        showCancel: !1,
-        confirmText: "知道了",
-        success: function(a) {}
-      }), wx.getStorage({
-        key: "order_data",
-        success: function(a) {
-          console.log(a.data);
-          var t = a.data;
-          if (console.log("缓存优惠券", t), !t.couponID) {
-            var o = t.combTampArr,
-              r = !1;
-            if (t.color_name)
-              for (i = 0; i < o.length; i++) 1 === o[i].is_connect_color && (r = !0);
-            if ("string" == typeof t.color_name && t.color_name) {
-              for (var s = t.color_name.split(","), i = 0; i < s.length; i++) s[i] = {
-                text: s[i],
-                class: !1
-              };
-              e.setData({
-                "data.color_name": s
-              });
-            }
+      success: function (a) {
+        console.log("wx.getSetting---------", a), !1 === a.authSetting["scope.address"] ? e.setData({
+          openSettingBtn: !1
+        }) : e.setData({
+          openSettingBtn: !0
+        });
+      }
+    }) : wx.showModal({
+      title: "提示",
+      content: "您的微信版本过低，暂不支持此功能，可以下载最新微信版本，获取更多的小程序功能",
+      showCancel: !1,
+      confirmText: "知道了",
+      success: function (a) { }
+    }), wx.getStorage({
+      key: "order_data",
+      success: function (a) {
+        console.log(a.data);
+        var t = a.data;
+        if (console.log("缓存优惠券", t), !t.couponID) {
+          var o = t.combTampArr,
+            r = !1;
+          if (t.color_name)
+            for (i = 0; i < o.length; i++) 1 === o[i].is_connect_color && (r = !0);
+          if ("string" == typeof t.color_name && t.color_name) {
+            for (var s = t.color_name.split(","), i = 0; i < s.length; i++) s[i] = {
+              text: s[i],
+              class: !1
+            };
             e.setData({
-              "data.brandName": t.brandName,
-              "data.brandID": t.brandID,
-              "data.modelName": t.modelName,
-              "data.modelID": t.modelID,
-              "data.isColor": r,
-              "data.combTampArr": t.combTampArr,
-              "data.thumbImg": t.thumbImg,
-              "data.price": t.price,
-              "data.payPriceprice": t.price,
-              "data.otherRepair": t.otherRepair
+              "data.color_name": s
             });
           }
-        }
-      }), o) return o = !1, !1;
-    if (e.region_price(e.getScreenRepairPrice()), wx.getStorage({
-        key: "order_data",
-        success: function(a) {
-          var t = a.data;
-          if ("请选择优惠券" != t.couponName) {
-            var o = parseFloat(t.price) - parseFloat(t.couponPrice);
-            o < 0 && (o = 0), e.setData({
-              "data.payPriceprice": o,
-              "data.couponID": t.couponID,
-              "data.couponPrice": t.couponPrice,
-              "data.couponName": t.couponName
-            });
-          }
-        }
-      }), wx.getStorage({
-        key: "order_storeId",
-        success: function(t) {
-          console.log(t.data);
-          var o = t.data;
-          console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!sotreId = ", o)
           e.setData({
-            "data.storeId": o
-          });
-          for (var r in a) a[r].id == o && e.setData({
-            store_name: a[r].name,
-            store_address: a[r].address,
-            store_time: a[r].serviceTime,
-            store_phone: a[r].phone,
-            store_status: !0
+            "data.brandName": t.brandName,
+            "data.brandID": t.brandID,
+            "data.modelName": t.modelName,
+            "data.modelID": t.modelID,
+            "data.isColor": r,
+            "data.combTampArr": t.combTampArr,
+            "data.thumbImg": t.thumbImg,
+            "data.price": t.price,
+            "data.payPriceprice": t.price,
+            "data.otherRepair": t.otherRepair
           });
         }
-      }), r) {
+      }
+    }), o) return o = !1, !1;
+    if (e.region_price(e.getScreenRepairPrice()), wx.getStorage({
+      key: "order_data",
+      success: function (a) {
+        var t = a.data;
+        if ("请选择优惠券" != t.couponName) {
+          var o = parseFloat(t.price) - parseFloat(t.couponPrice);
+          o < 0 && (o = 0), e.setData({
+            "data.payPriceprice": o,
+            "data.couponID": t.couponID,
+            "data.couponPrice": t.couponPrice,
+            "data.couponName": t.couponName
+          });
+        }
+      }
+    }), wx.getStorage({
+      key: "order_storeId",
+      success: function (t) {
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!sotreId =", t.data);
+        var o = t.data;
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!sotreId = ", o)
+        e.setData({
+          "data.storeId": o
+        });
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! a = ", a)
+        for (var r in a) a[r].id == o && e.setData({
+          store_name: a[r].name,
+          store_address: a[r].address,
+          store_time: a[r].serviceTime,
+          store_phone: a[r].phone,
+          store_status: !0
+        });
+      }
+    }), r) {
       for (var t = e.data.data.combTampArr, s = 0, i = 0, n = t.length; i < n; i++) 20 !== t[i].choose_failure && (s += parseFloat(t[i].price));
       e.setData({
         "data.payPriceprice": s
       });
     }
   },
-  onReady: function() {},
-  click_color: function(a) {
+  onReady: function () { },
+  click_color: function (a) {
     var e = a.target.dataset.index,
       t = this.data.data.color_name;
     if (t[e].class) t[e].class = null;
@@ -261,12 +250,12 @@ Page({
       data: this.data.data
     });
   },
-  openwin: function(a) {
+  openwin: function (a) {
     if (1 == n || 1 == c) wx.showModal({
       title: "提示",
       content: "当前价格为活动价，不能使用优惠券",
       showCancel: !1,
-      success: function(a) {
+      success: function (a) {
         if (a.confirm) return console.log("用户点击确定"), !1;
         a.cancel && console.log("用户点击取消");
       }
@@ -278,7 +267,7 @@ Page({
       });
     }
   },
-  formSubmit: function(a) {
+  formSubmit: function (a) {
     var e = a.detail.formId,
       o = [],
       r = "",
@@ -290,7 +279,7 @@ Page({
         title: "提示",
         content: "请选择服务地址",
         showCancel: !1,
-        success: function(a) {
+        success: function (a) {
           a.confirm && console.log("用户点击确定");
         }
       }), !1;
@@ -298,7 +287,7 @@ Page({
         title: "提示",
         content: "请选择上门时间",
         showCancel: !1,
-        success: function(a) {
+        success: function (a) {
           a.confirm && console.log("用户点击确定");
         }
       }), !1;
@@ -310,19 +299,19 @@ Page({
         "尽快到达" == p && (r = 0), n = !0;
     } else if (73 == d.repairWay) {
       console.log("111111111111")
-      // if ("" == d.storeId || !c.data.store_status) return wx.showModal({
-      //   title: "提示",
-      //   content: "请选择门店",
-      //   showCancel: !1,
-      //   success: function(a) {
-      //     a.confirm && console.log("用户点击确定");
-      //   }
-      // }), !1;
+      if ("" == d.storeId || !c.data.store_status) return wx.showModal({
+        title: "提示",
+        content: "请选择门店",
+        showCancel: !1,
+        success: function (a) {
+          a.confirm && console.log("用户点击确定");
+        }
+      }), !1;
       if ("" == c.data.name02) return wx.showModal({
         title: "提示",
         content: "请输入您的姓名",
         showCancel: !1,
-        success: function(a) {
+        success: function (a) {
           a.confirm && console.log("用户点击确定");
         }
       }), !1;
@@ -330,14 +319,14 @@ Page({
         title: "提示",
         content: "请输入您的手机号码",
         showCancel: !1,
-        success: function(a) {
+        success: function (a) {
           a.confirm && console.log("用户点击确定");
         }
       }), !1) : (wx.showModal({
         title: "提示",
         content: "请输入正确的手机号码",
         showCancel: !1,
-        success: function(a) {
+        success: function (a) {
           a.confirm && console.log("用户点击确定");
         }
       }), !1);
@@ -350,7 +339,7 @@ Page({
         title: "提示",
         content: "请填写您的回寄地址",
         showCancel: !1,
-        success: function(a) {
+        success: function (a) {
           a.confirm && console.log("用户点击确定");
         }
       }), !1;
@@ -360,7 +349,7 @@ Page({
         title: "提示",
         content: "请输入您的姓名",
         showCancel: !1,
-        success: function(a) {
+        success: function (a) {
           a.confirm && console.log("用户点击确定");
         }
       }), !1;
@@ -368,14 +357,14 @@ Page({
         title: "提示",
         content: "请输入您的手机号码",
         showCancel: !1,
-        success: function(a) {
+        success: function (a) {
           a.confirm && console.log("用户点击确定");
         }
       }), !1) : (wx.showModal({
         title: "提示",
         content: "请输入正确的手机号码",
         showCancel: !1,
-        success: function(a) {
+        success: function (a) {
           a.confirm && console.log("用户点击确定");
         }
       }), !1);
@@ -383,7 +372,7 @@ Page({
         title: "提示",
         content: "请输入工程师编号",
         showCancel: !1,
-        success: function(a) {
+        success: function (a) {
           a.confirm && console.log("用户点击确定");
         }
       }), !1;
@@ -403,7 +392,7 @@ Page({
           title: "提示",
           content: "请选择颜色",
           showCancel: !1,
-          success: function(a) {
+          success: function (a) {
             a.confirm && console.log("用户点击确定");
           }
         }), !1;
@@ -412,7 +401,7 @@ Page({
         title: "提示",
         content: "请勾选同意下方的《服务协议》，即可立刻维修哦",
         showCancel: !1,
-        success: function(a) {
+        success: function (a) {
           a.confirm && console.log("用户点击确定");
         }
       }), !1;
@@ -431,7 +420,7 @@ Page({
       }
       //请求提交维修信息
       var userId = wx.getStorageSync("azooo_userID")
-      console.log("oooooo==",o)
+      console.log("oooooo==", o)
 
       websocket.send({
         cmd: 10005, //消息号
@@ -451,7 +440,7 @@ Page({
           price: d.price
         }
       });
-      console.log("d.price",d.price)
+      console.log("d.price", d.price)
       var rspScheme = onfire.on('rspScheme', function (msg) {
         // 当消息被传递时，做具体的事
         console.log("接到rspScheme事件----------------！！~~", msg)
@@ -460,7 +449,7 @@ Page({
         var rsp = JSON.parse(msg.param)
         wx.redirectTo({
           url: "../success/success?id=" + rsp.id + "&status=" + c.data.status + "&storeId=" + d.storeId
-          })
+        })
         s = !0
       })
 
@@ -523,23 +512,23 @@ Page({
       // });
     }
   },
-  inputMark: function(a) {
+  inputMark: function (a) {
     this.data.data.desc = a.detail.value, this.setData({
       data: this.data.data
     });
   },
-  blurMark: function() {
+  blurMark: function () {
     wx.setStorage({
       key: "order_data",
       data: this.data.data
     });
   },
-  inputInvitation: function(a) {
+  inputInvitation: function (a) {
     this.data.data.invitationCode = a.detail.value, this.setData({
       data: this.data.data
     }), e = a.detail.value;
   },
-  exchange_fun: t.throttle(1e3, function() {
+  exchange_fun: t.throttle(1e3, function () {
     var a = this,
       o = a.data.data.modelID,
       i = a.data.data.combTampArr;
@@ -548,7 +537,7 @@ Page({
         title: "提示",
         content: "该机型不在本次活动范围之内",
         showCancel: !1,
-        success: function(a) {
+        success: function (a) {
           a.confirm && console.log("用户点击确定");
         }
       }), a.setData({
@@ -563,7 +552,7 @@ Page({
         title: "提示",
         content: "维修故障类型必须包含电池故障才能使用兑换码",
         showCancel: !1,
-        success: function(a) {
+        success: function (a) {
           a.confirm && console.log("用户点击确定");
         }
       }), a.setData({
@@ -578,7 +567,7 @@ Page({
         modelId: o
       },
       header: {},
-      success: function(e) {
+      success: function (e) {
         if (s = !0, 0 == e.data.error_code) {
           r = !0;
           for (var t = 0, o = 0, n = i.length; o < n; o++) 20 !== i[o].choose_failure ? t += parseFloat(i[o].price) : 20 == i[o].choose_failure && a.setData({
@@ -598,31 +587,31 @@ Page({
           title: "提示",
           content: e.data.error_msg,
           showCancel: !1,
-          success: function(a) {
+          success: function (a) {
             a.confirm && console.log("用户点击确定");
           }
         });
       }
     });
   }),
-  blurInvitation: function() {
+  blurInvitation: function () {
     wx.setStorage({
       key: "order_data",
       data: this.data.data
     });
   },
-  selectConTime: function() {
+  selectConTime: function () {
     this.setData({
       timeFlag: !1,
       timeShadeFlag: !this.data.timeShadeFlag
     });
   },
-  time_cancle: function() {
+  time_cancle: function () {
     this.setData({
       timeShadeFlag: !this.data.timeShadeFlag
     });
   },
-  time_confirm: function() {
+  time_confirm: function () {
     var a = this.data.dateArr,
       e = this.data.timeArr,
       t = a[this.data.dateValue].text;
@@ -635,20 +624,20 @@ Page({
       data: this.data.data
     });
   },
-  ChangeDate: function(a) {
+  ChangeDate: function (a) {
     var e = a.detail.value[0];
     console.log(e), this.setData({
       dateValue: [e],
       timeValue: [0]
     }), 0 == e ? this.showTimeDetaile(!0) : this.showTimeDetaile(!1);
   },
-  ChangeTime: function(a) {
+  ChangeTime: function (a) {
     var e = a.detail.value[0];
     this.setData({
       timeValue: [e]
     }), this.data.timeFlag && this.time_confirm();
   },
-  showTime: function(a) {
+  showTime: function (a) {
     if (this.isLeapYear(r)) e = ["31", "29", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31"];
     else var e = ["31", "28", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31"];
     var t = new Array("周日", "周一", "周二", "周三", "周四", "周五", "周六"),
@@ -677,7 +666,7 @@ Page({
       dateArr: l
     });
   },
-  showTimeDetaile: function(a) {
+  showTimeDetaile: function (a) {
     var e = this.data.time_list,
       t = this.data.time_interval_str,
       o = parseInt(t.sm_star_hour),
@@ -691,9 +680,9 @@ Page({
     l += n;
     var u = [];
     for (a && u.push({
-        text: "尽快到达",
-        class: !1
-      }); l <= d + n;) a ? c >= 60 * new Date().getHours() + new Date().getMinutes() + parseInt(60) && u.push({
+      text: "尽快到达",
+      class: !1
+    }); l <= d + n;) a ? c >= 60 * new Date().getHours() + new Date().getMinutes() + parseInt(60) && u.push({
       text: this.transformTime(c),
       class: !1
     }) : u.push({
@@ -704,22 +693,22 @@ Page({
       timeArr: u
     });
   },
-  transformTime: function(a) {
+  transformTime: function (a) {
     var e = parseInt(a / 60),
       t = a % 60;
     return e < 10 && (e = "0" + e), t < 10 && (t = "0" + t), e + ":" + t;
   },
-  checkoutWeek: function(a) {
+  checkoutWeek: function (a) {
     for (var e = this.data.time_list_weekArr, t = 0; t < e.length; t++)
       if (e[t] == a) return !0;
     return !1;
   },
-  isLeapYear: function(a) {
+  isLeapYear: function (a) {
     var e = a % 100 != 0,
       t = a % 400 == 0;
     return !!(a % 4 == 0 && e || t);
   },
-  selectMode: function(a) {
+  selectMode: function (a) {
     for (var e = this, t = a.target.dataset.modeid, o = a.target.dataset.index, s = this.data.mode, i = 0; i < s.length; i++) s[i].class = !1,
       o == i && (s[i].class = !0);
     this.setData({
@@ -729,11 +718,11 @@ Page({
     });
     var n = !1;
     if (72 == t ? e.data.selectAddress_status ? n = !1 : (console.log(e.data.selectAddress),
-        n = !0) : 73 == t ? n = 1 == e.data.store_status : 74 == t ? n = !e.data.selectAddress_status : 75 == t && (n = !0),
+      n = !0) : 73 == t ? n = 1 == e.data.store_status : 74 == t ? n = !e.data.selectAddress_status : 75 == t && (n = !0),
       n ? 75 == t ? e.getScreenRepairPrice(e.region_price()) : e.region_price(e.getScreenRepairPrice()) : e.getScreenRepairPrice(),
       wx.getStorage({
         key: "order_data",
-        success: function(a) {
+        success: function (a) {
           var t = a.data;
           if ("请选择优惠券" != t.couponName) {
             var o = parseFloat(t.price) - parseFloat(t.couponPrice);
@@ -750,10 +739,10 @@ Page({
     }
   },
 
-  selectAddress: function() {
+  selectAddress: function () {
     var a = this;
     wx.chooseAddress ? wx.chooseAddress({
-      success: function(e) {
+      success: function (e) {
         a.setData({
           "data.name": e.userName,
           "data.phone": e.telNumber,
@@ -777,7 +766,7 @@ Page({
           }
         }), a.region_price(a.getScreenRepairPrice());
       },
-      fail: function(e) {
+      fail: function (e) {
         console.log(e), a.setData({
           selectAddress_status: !0,
           openSettingBtn: !1
@@ -788,59 +777,59 @@ Page({
       content: "您的微信版本过低，暂不支持此功能，可以下载最新微信版本，获取更多的小程序功能",
       showCancel: !1,
       confirmText: "知道了",
-      success: function(a) {}
+      success: function (a) { }
     });
   },
-  input_name: function(a) {
+  input_name: function (a) {
     this.setData({
       name02: a.detail.value
     });
   },
-  input_phone: function(a) {
+  input_phone: function (a) {
     this.setData({
       phone02: a.detail.value
     });
   },
-  input_master_id: function(a) {
+  input_master_id: function (a) {
     this.setData({
       "data.master_id": a.detail.value
     });
   },
-  backPage: function() {
+  backPage: function () {
     wx.navigateBack({
       delta: 1
     });
   },
-  showFlautCon: function() {
+  showFlautCon: function () {
     this.setData({
       faultListFlag: !0
     });
   },
-  closefaultListBG: function() {
+  closefaultListBG: function () {
     this.setData({
       faultListFlag: !1
     });
   },
-  onUnload: function() {
+  onUnload: function () {
     a = "", o = !0, e = "", r = !1, n = 0, c = 0;
   },
-  clickStore: function() {
+  clickStore: function () {
     var a = this;
     wx.navigateTo({
       url: "../stores/stores?yuyue_text_99=" + a.data.yuyue_text_99
     });
   },
-  null_fun: function() {},
-  openwin02: function(a) {
+  null_fun: function () { },
+  openwin02: function (a) {
     var e = a.target.dataset.url;
     wx.navigateTo({
       url: "../" + e + "/" + e
     });
   },
-  checkboxChange: function(a) {
+  checkboxChange: function (a) {
     i = a.detail.value;
   },
-  region_price: function(a) {
+  region_price: function (a) {
     var e, o, r, s, i = this;
     e = wx.getStorageSync("order_data");
     for (var c = 0; c < e.combTampArr.length; c++) 20 == e.combTampArr[c].choose_failure && (s = e.combTampArr[c].detail_failure);
@@ -859,7 +848,7 @@ Page({
             detailFailure: s
           },
           method: "POST",
-          success: function(t) {
+          success: function (t) {
             if (0 == t.data.error_code) {
               console.log("电池价格", t.data.data.price);
               var o = parseInt(t.data.data.price),
@@ -885,13 +874,13 @@ Page({
             } else console.log("99换电池接口失败");
             a && a();
           },
-          fail: function() {},
-          complete: function() {}
+          fail: function () { },
+          complete: function () { }
         });
-    } catch (a) {}
+    } catch (a) { }
   },
 
-  getScreenRepairPrice: function(a) {
+  getScreenRepairPrice: function (a) {
     var e, o, r, s, i = this;
     e = wx.getStorageSync("order_data");
     for (var n = 0; n < e.combTampArr.length; n++) 11 == e.combTampArr[n].choose_failure && (s = e.combTampArr[n].detail_failure);
@@ -910,7 +899,7 @@ Page({
             detailFailure: s
           },
           method: "POST",
-          success: function(t) {
+          success: function (t) {
             if (0 == t.data.error_code) {
               console.log("屏幕价格", t.data.data.price);
               var o = parseInt(t.data.data.price),
@@ -935,8 +924,8 @@ Page({
                 }), a && a();
             } else console.log("99换屏幕接口失败");
           },
-          fail: function() {},
-          complete: function() {}
+          fail: function () { },
+          complete: function () { }
         });
     } catch (a) {
       console.log(a);

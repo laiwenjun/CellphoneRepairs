@@ -2,10 +2,11 @@
     <view class="top">
         <swiper autoplay="true" circular="true" duration="500" indicatorActiveColor="#fff" indicatorColor="rgba(0, 0, 0, .3)" indicatorDots="true" interval="3000">
             <swiper-item wx:for="{{imgUrls}}" wx:key="index">
-                <navigator appId="wx9b2fca9090d88e5d" class="navigator" extraData="{}" openType="navigate" path="pages/sign_in/sign_in" target="miniProgram" version="release" wx:if="{{item.titleUrl=='call'}}">打开绑定的小程序</navigator>
-                <image bindtap="swiperClick" class="slide-image" data-url="{{item.titleUrl}}" src="{{item.uploadFiles}}"></image>
+                
+                <image bindtap="swiperClick" class="slide-image" data-url="{{item.titleUrl}}" src="{{item}}"></image>
             </swiper-item>
         </swiper>
+        <navigator appId="wx7690e7e5f10a02cb" class="navigator" extraData="{}" openType="navigate" path="pages/sign_in/sign_in" target="miniProgram" version="release" wx:if="{{item.titleUrl=='call'}}">打开绑定的小程序</navigator>
         <view class="getIphoneCon">
             <view class="getIphoneCon_l">
                 <image class="model_img" src="{{dataForm.thumbImg?dataForm.thumbImg:'../../images/null.png'}}"></image>

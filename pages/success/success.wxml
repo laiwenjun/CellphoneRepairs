@@ -18,7 +18,7 @@
         <image mode="scaleToFill" src="../../images/icon.png" style="width:120rpx;height:160rpx;"></image>
     </view>
     <view class="text01">到店维修下单成功</view>
-    <view class="content">您已成功预约【加速度】到店维修服务，请在门店服务时间内到店，届时会有客服前台指引您，祝您有一个愉悦的服务体验。</view>
+    <view class="content">您已成功预约【大众手机维修】到店维修服务，请在门店服务时间内到店，届时会有客服前台指引您，祝您有一个愉悦的服务体验。</view>
     <view class="profile">门店地址：{{store_address}}</view>
     <view class="profile">服务时间：{{store_time}}</view>
     <view class="profile">联系电话：{{store_phone}}</view>
@@ -37,9 +37,9 @@
     </view>
     <view class="text01">邮寄维修下单成功</view>
     <view class="content">请将手机邮寄到下方地址（请选择到付），我们会在收到手机后尽快维修，维修完成后将手机寄回，您可在个人中心查看订单进度。</view>
-    <view class="profile">门店地址：广东省广州市天河区地中海酒店2503</view>
-    <view class="profile">收件人：加速度前台</view>
-    <view class="profile">联系电话：020-38837803 , 18613051177</view>
+    <view class="profile">门店地址：广东省广州市天河区xxxxxxxxxx</view>
+    <view class="profile">收件人：大众手机维修前台</view>
+    <view class="profile">联系电话：18620557755</view>
     <view class="buttonBox">
         <view>
             <view bindtap="clickIndex" class="my_bottom">返回首页</view>

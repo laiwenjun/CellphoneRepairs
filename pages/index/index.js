@@ -10,7 +10,7 @@ var onfire = require("../../utils/onfire.js");
 Page({
   //数据声明初始化
   data: {
-    imgUrls: [],
+    imgUrls: ["../../images/1_1.png"],
     localModel: "",
     changeModel_alert: !1,
     brandArr: null,
@@ -85,10 +85,9 @@ Page({
       //       success: function(a) {
       //         a.confirm ? console.log("用户点击确定1") : a.cancel && console.log("用户点击取消");
       //       }
-      //     });
+      //       }); 
       //   }
       // });
-
 
     try {
       var s = wx.getStorageSync("Allbrandmodel"),
