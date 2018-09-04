@@ -196,7 +196,7 @@
             <checkbox checked="true" color="#ffda44" value="1"></checkbox>
             <text class="agreement_text">我已经详细阅读并同意</text>
         </label>
-        <text catchtap="openwin02" class="color_yellow agreement_text" data-url="agreement">《加速度用户服务协议》</text>
+        <text catchtap="openwin02" class="color_yellow agreement_text" data-url="agreement">《大众用户服务协议》</text>
     </checkbox-group>
     <view style="margin-top:3%;">
         <view>温馨提示</view>

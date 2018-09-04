@@ -10,7 +10,7 @@ var onfire = require("../../utils/onfire.js");
 Page({
   //数据声明初始化
   data: {
-    imgUrls: ["../../images/1_1.png"],
+    imgUrls: [""],
     localModel: "",
     changeModel_alert: !1,
     brandArr: null,
