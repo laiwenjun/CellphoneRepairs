@@ -132,6 +132,22 @@ Page({
 //         }
 //       });
               var userId = wx.getStorageSync("azooo_userID");
+              wx.getStorage({
+                key: "azooo_userID",
+                success: function (e) {
+                  userId = e.data
+                },
+
+                fail: function () {
+                  userId = 0
+                  console.log("azooo_userID ==== null")
+                  a.wxlogin({
+                    callback: function (a) {
+                    }
+                  });
+                }
+              });
+              
               null != r.latitude && (s = r.latitude, i = r.longitude),
                 console.log("请求品牌型号故障信息--------", userId)
               websocket.send({
@@ -298,6 +314,21 @@ Page({
           i = "";
 
         var userId = wx.getStorageSync("azooo_userID");
+        wx.getStorage({
+          key: "azooo_userID",
+          success: function (e) {
+            userId = e.data
+          },
+
+          fail: function () {
+            userId = 0
+            console.log("azooo_userID ==== null")
+            a.wxlogin({
+              callback: function (a) {
+              }
+            });
+          }
+        });
         null != r.latitude && (s = r.latitude, i = r.longitude),
           console.log("请求品牌型号故障信息--------", userId)
         websocket.send({
